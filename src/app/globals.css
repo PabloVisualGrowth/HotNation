@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+:root {
+  /* HOT NATION PALETTE */
+  --color-infrared: #C2410C;
+  --color-hot-orange: #EA580C;
+  --color-void: #000000;
+  --color-text-white: #FFFFFF;
+}
+
+@theme inline {
+  --color-primary: var(--color-infrared);
+  --color-accent: var(--color-hot-orange);
+  --color-bg-void: var(--color-void);
+
+  --font-display: 'Inter', sans-serif;
+  /* Placeholder until font is loaded */
+  --font-body: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--color-bg-void);
+  color: var(--color-text-white);
+  font-family: var(--font-body);
+}
+
+/* Utilities */
+.glass-nav {
+  @apply backdrop-blur-md bg-white/5 border-b border-white/10;
+}
