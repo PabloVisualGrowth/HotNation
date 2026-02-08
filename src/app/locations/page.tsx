@@ -28,7 +28,7 @@ export default function LocationsPage() {
                         <motion.div
                             initial={{ filter: "grayscale(100%)" }}
                             whileInView={{ filter: "grayscale(0%)" }}
-                            viewport={{ amount: 0.5, margin: "-40% 0px -40% 0px" }}
+                            viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
                             className="relative h-[60vh] w-full mb-8 overflow-hidden transition-all duration-700 md:grayscale md:hover:grayscale-0"
                         >
                             <Image
@@ -42,7 +42,7 @@ export default function LocationsPage() {
                         <motion.div
                             initial={{ color: "black", borderColor: "black" }}
                             whileInView={{ color: "#bc3908", borderColor: "#bc3908" }}
-                            viewport={{ amount: 0.5, margin: "-10% 0px -40% 0px" }}
+                            viewport={{ amount: 0.1, margin: "-10% 0px -30% 0px" }}
                             className="flex justify-between items-end border-b pb-4 mb-4 transition-colors duration-700 group-hover:border-[#bc3908]"
                         >
                             <h2 className={`${syne.className} text-4xl uppercase transition-colors duration-700 group-hover:text-[#bc3908]`}>Eindhoven</h2>
@@ -65,7 +65,7 @@ export default function LocationsPage() {
                         <motion.div
                             initial={{ filter: "grayscale(100%)" }}
                             whileInView={{ filter: "grayscale(0%)" }}
-                            viewport={{ amount: 0.5, margin: "-40% 0px -40% 0px" }}
+                            viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
                             className="relative h-[60vh] w-full mb-8 overflow-hidden transition-all duration-700 md:grayscale md:hover:grayscale-0"
                         >
                             <Image
@@ -79,7 +79,7 @@ export default function LocationsPage() {
                         <motion.div
                             initial={{ color: "black", borderColor: "black" }}
                             whileInView={{ color: "#bc3908", borderColor: "#bc3908" }}
-                            viewport={{ amount: 0.5, margin: "-10% 0px -40% 0px" }}
+                            viewport={{ amount: 0.1, margin: "-10% 0px -30% 0px" }}
                             className="flex justify-between items-end border-b pb-4 mb-4 transition-colors duration-700 group-hover:border-[#bc3908]"
                         >
                             <h2 className={`${syne.className} text-4xl uppercase transition-colors duration-700 group-hover:text-[#bc3908]`}>Rotterdam</h2>

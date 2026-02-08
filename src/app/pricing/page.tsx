@@ -37,7 +37,7 @@ export default function PricingPage() {
                             <motion.div
                                 initial={false}
                                 whileInView={{ opacity: 1, backgroundColor: "#bc3908" }}
-                                viewport={{ amount: 0.5, margin: "-40% 0px -40% 0px" }}
+                                viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
                                 className="absolute inset-0 transition-colors duration-700 pointer-events-none opacity-0 group-hover:opacity-100 md:group-hover:opacity-100"
                             />
                             <div className="relative z-10 h-full flex flex-col justify-between">
