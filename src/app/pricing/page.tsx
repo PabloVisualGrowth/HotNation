@@ -3,6 +3,7 @@
 import { Syne } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { motion } from "framer-motion";
 
 const syne = Syne({ subsets: ["latin"], weight: ["400", "700", "800"] });
 
@@ -32,15 +33,23 @@ export default function PricingPage() {
                         { name: "10 Pack", price: "210€", desc: "Valid for 6 months. Shareable.", highlight: false },
                         { name: "20 Pack", price: "380€", desc: "Valid for 12 months. Shareable.", highlight: false }
                     ].map((item, i) => (
-                        <div key={i} className={`p-12 border border-black/10 flex flex-col justify-between h-96 transition-all duration-700 hover:bg-[#bc3908] hover:text-white group ${item.highlight ? 'bg-black text-white' : 'bg-white text-black'}`}>
-                            <div>
-                                <h3 className="text-xs font-bold uppercase tracking-widest mb-4 opacity-70">{item.name}</h3>
-                                <div className={`${syne.className} text-6xl font-bold mb-4 transition-transform duration-700 group-hover:scale-105`}>{item.price}</div>
-                                <p className="font-serif italic opacity-60 group-hover:opacity-100 transition-opacity duration-700">{item.desc}</p>
+                        <div key={i} className={`p-12 border border-black/10 flex flex-col justify-between h-96 transition-all duration-700 hover:bg-[#bc3908] hover:text-white group relative overflow-hidden ${item.highlight ? 'bg-black text-white' : 'bg-white text-black'}`}>
+                            <motion.div
+                                initial={false}
+                                whileInView={{ opacity: 1, backgroundColor: "#bc3908" }}
+                                viewport={{ amount: 0.5, margin: "-40% 0px -40% 0px" }}
+                                className="absolute inset-0 transition-colors duration-700 pointer-events-none opacity-0 group-hover:opacity-100 md:group-hover:opacity-100"
+                            />
+                            <div className="relative z-10 h-full flex flex-col justify-between">
+                                <div>
+                                    <h3 className="text-xs font-bold uppercase tracking-widest mb-4 opacity-70">{item.name}</h3>
+                                    <div className={`${syne.className} text-6xl font-bold mb-4 transition-transform duration-700 group-hover:scale-105`}>{item.price}</div>
+                                    <p className="font-serif italic opacity-60 group-hover:opacity-100 transition-opacity duration-700">{item.desc}</p>
+                                </div>
+                                <button className={`w-full py-3 border text-xs font-bold uppercase tracking-widest transition-all ${item.highlight ? 'bg-white text-black border-white hover:bg-transparent hover:text-white' : 'border-black group-hover:border-white hover:bg-white hover:text-black'}`}>
+                                    Purchase
+                                </button>
                             </div>
-                            <button className={`w-full py-3 border text-xs font-bold uppercase tracking-widest transition-all ${item.highlight ? 'bg-white text-black border-white hover:bg-transparent hover:text-white' : 'border-black group-hover:border-white hover:bg-white hover:text-black'}`}>
-                                Purchase
-                            </button>
                         </div>
                     ))}
                 </div>

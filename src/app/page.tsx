@@ -101,18 +101,26 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Item 2 - Text Block - B&W to Color on Hover */}
+          {/* Item 2 - Text Block - B&W to Color on Hover/Scroll */}
           <div className="bg-black p-12 flex flex-col justify-between text-white relative group h-full transition-colors duration-700 hover:bg-[#bc3908]">
-            <div className="text-xs font-bold uppercase tracking-widest border-b border-white/20 pb-4">
-              Trial Offer
+            <motion.div
+              initial={false}
+              whileInView={{ backgroundColor: "#bc3908" }}
+              viewport={{ amount: 0.5, margin: "-40% 0px -40% 0px" }}
+              className="absolute inset-0 transition-colors duration-700 pointer-events-none"
+            />
+            <div className="relative z-10 h-full flex flex-col justify-between">
+              <div className="text-xs font-bold uppercase tracking-widest border-b border-white/20 pb-4">
+                Trial Offer
+              </div>
+              <div>
+                <h3 className={`${syne.className} text-6xl uppercase mb-4 transition-transform duration-700 group-hover:scale-105`}>3 Classes</h3>
+                <p className="text-xl font-serif italic text-gray-400 group-hover:text-white transition-colors duration-700">For just 45€</p>
+              </div>
+              <button className="self-start px-6 py-2 border border-white rounded-full text-xs font-bold uppercase hover:bg-white hover:text-black transition-colors">
+                Book Now
+              </button>
             </div>
-            <div>
-              <h3 className={`${syne.className} text-6xl uppercase mb-4 transition-transform duration-700 group-hover:scale-105`}>3 Classes</h3>
-              <p className="text-xl font-serif italic text-gray-400 group-hover:text-white transition-colors duration-700">For just 45€</p>
-            </div>
-            <button className="self-start px-6 py-2 border border-white rounded-full text-xs font-bold uppercase hover:bg-white hover:text-black transition-colors">
-              Book Now
-            </button>
           </div>
 
           {/* Item 3 - Image */}
@@ -133,22 +141,30 @@ export default function Home() {
         </div>
 
         {/* Row 2 - 2 Columns Split */}
-        <div className="grid grid-cols-1 md:grid-cols-2 md:h-[80vh]">
+        <div className="grid grid-cols-1 md:grid-cols-2 md:h-[80vh] group">
           <div className="relative bg-black text-white p-12 md:p-24 flex flex-col justify-center min-h-[60vh] md:min-h-0 transition-colors duration-700 hover:bg-[#1a1a1a]">
-            <h2 className={`${syne.className} text-5xl md:text-8xl uppercase mb-8 leading-[0.9]`}>
-              Infrared<br />Benefit
-            </h2>
-            <p className="text-lg md:text-xl text-gray-500 max-w-md leading-relaxed mb-12 hover:text-gray-300 transition-colors">
-              Detoxify vertically while you sculpt horizontally. Our panels heat the body directly, not the air, allowing for a deeper sweat at a lower temperature.
-            </p>
-            <div className="grid grid-cols-2 gap-8">
-              <div>
-                <div className="text-4xl font-bold font-serif italic">45m</div>
-                <div className="text-[10px] uppercase tracking-widest mt-2">Efficiency</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold font-serif italic">600+</div>
-                <div className="text-[10px] uppercase tracking-widest mt-2">Cals Burned</div>
+            <motion.div
+              initial={false}
+              whileInView={{ backgroundColor: "#1a1a1a" }}
+              viewport={{ amount: 0.5, margin: "-40% 0px -40% 0px" }}
+              className="absolute inset-0 transition-colors duration-700 pointer-events-none"
+            />
+            <div className="relative z-10">
+              <h2 className={`${syne.className} text-5xl md:text-8xl uppercase mb-8 leading-[0.9]`}>
+                Infrared<br />Benefit
+              </h2>
+              <p className="text-lg md:text-xl text-gray-500 max-w-md leading-relaxed mb-12 hover:text-gray-300 transition-colors">
+                Detoxify vertically while you sculpt horizontally. Our panels heat the body directly, not the air, allowing for a deeper sweat at a lower temperature.
+              </p>
+              <div className="grid grid-cols-2 gap-8">
+                <div>
+                  <div className="text-4xl font-bold font-serif italic">45m</div>
+                  <div className="text-[10px] uppercase tracking-widest mt-2">Efficiency</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold font-serif italic">600+</div>
+                  <div className="text-[10px] uppercase tracking-widest mt-2">Cals Burned</div>
+                </div>
               </div>
             </div>
           </div>
@@ -157,7 +173,7 @@ export default function Home() {
               src="/back-sweat.jpg"
               alt="Infrared"
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-700 group-hover:scale-105 transition-all grayscale group-hover:grayscale-0"
               unoptimized
             />
           </div>

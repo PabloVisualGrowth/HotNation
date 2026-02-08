@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Syne } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { motion } from "framer-motion";
 
 const syne = Syne({ subsets: ["latin"], weight: ["400", "700", "800"] });
 
@@ -43,8 +44,8 @@ export default function StudioPage() {
                 </p>
             </section>
 
-            <section className="grid grid-cols-1 md:grid-cols-2 h-[80vh] group">
-                <div className="relative border-r border-black/5">
+            <section className="grid grid-cols-1 md:grid-cols-2 md:h-[80vh] group">
+                <div className="relative border-r border-black/5 h-[70vh] md:h-full">
                     <Image
                         src="/img-ball.jpg"
                         alt="Equipment"
@@ -52,12 +53,26 @@ export default function StudioPage() {
                         className="object-cover transition-all duration-700 grayscale group-hover:grayscale-0"
                         unoptimized
                     />
+                    <motion.div
+                        initial={{ opacity: 1 }}
+                        whileInView={{ opacity: 0 }}
+                        viewport={{ amount: 0.5, margin: "-40% 0px -40% 0px" }}
+                        className="absolute inset-0 bg-white/10 pointer-events-none transition-opacity duration-700"
+                    />
                 </div>
                 <div className="relative bg-black text-white p-12 md:p-24 flex flex-col justify-center transition-colors duration-700 group-hover:bg-[#bc3908]">
-                    <h2 className={`${syne.className} text-4xl md:text-6xl uppercase mb-8 transition-transform duration-700 group-hover:scale-105`}>Heat Panels</h2>
-                    <p className="text-xl font-serif italic opacity-50 group-hover:opacity-100 transition-opacity duration-700">
-                        Operating at 35-40°C, our infrared heat penetrates 3cm deep into muscle tissue, increasing flexibility and calorie burn without the suffocating feeling of traditional hot yoga.
-                    </p>
+                    <motion.div
+                        initial={false}
+                        whileInView={{ backgroundColor: "#bc3908" }}
+                        viewport={{ amount: 0.5, margin: "-40% 0px -40% 0px" }}
+                        className="absolute inset-0 transition-colors duration-700 pointer-events-none"
+                    />
+                    <div className="relative z-10">
+                        <h2 className={`${syne.className} text-4xl md:text-6xl uppercase mb-8 transition-transform duration-700 group-hover:scale-105`}>Heat Panels</h2>
+                        <p className="text-xl font-serif italic opacity-50 group-hover:opacity-100 transition-opacity duration-700">
+                            Operating at 35-40°C, our infrared heat penetrates 3cm deep into muscle tissue, increasing flexibility and calorie burn without the suffocating feeling of traditional hot yoga.
+                        </p>
+                    </div>
                 </div>
             </section>
 
