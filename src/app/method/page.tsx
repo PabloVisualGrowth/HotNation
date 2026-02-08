@@ -34,7 +34,9 @@ export default function MethodPage() {
                     <motion.div
                         initial={{ filter: "grayscale(100%)" }}
                         whileInView={{ filter: "grayscale(0%)" }}
+                        whileHover={{ filter: "grayscale(0%)" }}
                         viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
+                        transition={{ duration: 0.7 }}
                         className="relative h-[60vh] w-full overflow-hidden transition-all duration-700 md:grayscale md:hover:grayscale-0"
                     >
                         <Image src="/collage-1.jpg" alt="Infrared Heat" fill className="object-cover" unoptimized />
@@ -72,8 +74,10 @@ export default function MethodPage() {
                     <motion.div
                         initial={{ filter: "grayscale(100%)" }}
                         whileInView={{ filter: "grayscale(0%)" }}
+                        whileHover={{ filter: "grayscale(0%)" }}
                         viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
-                        className="relative h-[60vh] w-full overflow-hidden transition-all duration-700 md:grayscale md:hover:grayscale-0 order-1 md:order-2"
+                        transition={{ duration: 0.7 }}
+                        className="relative h-[60vh] w-full overflow-hidden order-1 md:order-2"
                     >
                         <Image src="/collage-3.jpg" alt="Barre Form" fill className="object-cover" unoptimized />
                     </motion.div>
@@ -84,8 +88,10 @@ export default function MethodPage() {
                     <motion.div
                         initial={{ filter: "grayscale(100%)" }}
                         whileInView={{ filter: "grayscale(0%)" }}
+                        whileHover={{ filter: "grayscale(0%)" }}
                         viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
-                        className="relative h-[60vh] w-full overflow-hidden transition-all duration-700 md:grayscale md:hover:grayscale-0"
+                        transition={{ duration: 0.7 }}
+                        className="relative h-[60vh] w-full overflow-hidden"
                     >
                         <Image src="/collage-5.jpg" alt="Mindset" fill className="object-cover" unoptimized />
                     </motion.div>

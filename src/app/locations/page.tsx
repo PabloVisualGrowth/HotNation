@@ -28,8 +28,10 @@ export default function LocationsPage() {
                         <motion.div
                             initial={{ filter: "grayscale(100%)" }}
                             whileInView={{ filter: "grayscale(0%)" }}
+                            whileHover={{ filter: "grayscale(0%)" }}
                             viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
-                            className="relative h-[60vh] w-full mb-8 overflow-hidden transition-all duration-700 md:grayscale md:hover:grayscale-0"
+                            transition={{ duration: 0.7 }}
+                            className="relative h-[60vh] w-full mb-8 overflow-hidden"
                         >
                             <Image
                                 src="/img-bridge.jpg"
@@ -65,8 +67,10 @@ export default function LocationsPage() {
                         <motion.div
                             initial={{ filter: "grayscale(100%)" }}
                             whileInView={{ filter: "grayscale(0%)" }}
+                            whileHover={{ filter: "grayscale(0%)" }}
                             viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
-                            className="relative h-[60vh] w-full mb-8 overflow-hidden transition-all duration-700 md:grayscale md:hover:grayscale-0"
+                            transition={{ duration: 0.7 }}
+                            className="relative h-[60vh] w-full mb-8 overflow-hidden"
                         >
                             <Image
                                 src="/img-pose.jpg"
