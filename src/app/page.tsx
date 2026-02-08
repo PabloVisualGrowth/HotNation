@@ -22,10 +22,10 @@ export default function Home() {
 
       {/* Hero Section */}
       <header className="relative h-screen w-full flex flex-col justify-end pb-20 items-center overflow-hidden bg-black">
-        {/* Background Grid - Collage of 5 Images */}
-        <div className="absolute inset-0 z-0 grid grid-cols-3 gap-1 opacity-80">
-          {/* Column 1 */}
-          <div className="flex flex-col gap-1">
+        {/* Background Grid - Collage of 5 Images - Responsive */}
+        <div className="absolute inset-0 z-0 grid grid-cols-2 md:grid-cols-3 gap-1 opacity-80">
+          {/* Column 1 - Hidden on small mobile or simplified */}
+          <div className="hidden md:flex flex-col gap-1">
             <div className="relative h-1/2 w-full">
               <Image src="/collage-1.jpg" alt="Hot Nation 1" fill className="object-cover" priority unoptimized />
             </div>
@@ -35,12 +35,12 @@ export default function Home() {
           </div>
 
           {/* Column 2 - Center Focus */}
-          <div className="relative h-full w-full">
+          <div className="relative h-full w-full col-span-2 md:col-span-1">
             <Image src="/collage-3.jpg" alt="Hot Nation 3" fill className="object-cover" priority unoptimized />
           </div>
 
-          {/* Column 3 */}
-          <div className="flex flex-col gap-1">
+          {/* Column 3 - Hidden on small mobile */}
+          <div className="hidden md:flex flex-col gap-1">
             <div className="relative h-2/3 w-full">
               <Image src="/collage-4.jpg" alt="Hot Nation 4" fill className="object-cover" priority unoptimized />
             </div>
@@ -50,7 +50,7 @@ export default function Home() {
           </div>
 
           {/* Dark Overlay for Text Readability */}
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-black/40" />
         </div>
 
         {/* Hero Content - Fading Gradient Logo */}
@@ -86,9 +86,9 @@ export default function Home() {
       {/* Grid Layout - Dense & Bold */}
       <section className="bg-[#FDF7E8]">
         {/* Row 1 - 3 Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 h-[80vh]">
+        <div className="grid grid-cols-1 md:grid-cols-3 md:h-[80vh]">
           {/* Item 1 - Image */}
-          <div className="relative group border-r border-[#FDF7E8]/10 h-full overflow-hidden">
+          <div className="relative group h-[50vh] md:h-full overflow-hidden">
             <Image
               src="/img-abs.jpg"
               alt="Sweat"
@@ -101,16 +101,16 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Item 2 - Text Block */}
-          <div className="bg-[#bc3908] p-12 flex flex-col justify-between text-white relative group h-full">
+          {/* Item 2 - Text Block - B&W to Color on Hover */}
+          <div className="bg-black p-12 flex flex-col justify-between text-white relative group h-full transition-colors duration-700 hover:bg-[#bc3908]">
             <div className="text-xs font-bold uppercase tracking-widest border-b border-white/20 pb-4">
               Trial Offer
             </div>
             <div>
-              <h3 className={`${syne.className} text-6xl uppercase mb-4`}>3 Classes</h3>
-              <p className="text-xl font-serif italic">For just 45€</p>
+              <h3 className={`${syne.className} text-6xl uppercase mb-4 transition-transform duration-700 group-hover:scale-105`}>3 Classes</h3>
+              <p className="text-xl font-serif italic text-gray-400 group-hover:text-white transition-colors duration-700">For just 45€</p>
             </div>
-            <button className="self-start px-6 py-2 border border-white rounded-full text-xs font-bold uppercase hover:bg-white hover:text-[#bc3908] transition-colors">
+            <button className="self-start px-6 py-2 border border-white rounded-full text-xs font-bold uppercase hover:bg-white hover:text-black transition-colors">
               Book Now
             </button>
           </div>
@@ -133,12 +133,12 @@ export default function Home() {
         </div>
 
         {/* Row 2 - 2 Columns Split */}
-        <div className="grid grid-cols-1 md:grid-cols-2 h-[80vh]">
-          <div className="relative bg-black text-white p-12 md:p-24 flex flex-col justify-center">
-            <h2 className={`${syne.className} text-7xl md:text-8xl uppercase mb-8 leading-[0.9]`}>
+        <div className="grid grid-cols-1 md:grid-cols-2 md:h-[80vh]">
+          <div className="relative bg-black text-white p-12 md:p-24 flex flex-col justify-center min-h-[60vh] md:min-h-0 transition-colors duration-700 hover:bg-[#1a1a1a]">
+            <h2 className={`${syne.className} text-5xl md:text-8xl uppercase mb-8 leading-[0.9]`}>
               Infrared<br />Benefit
             </h2>
-            <p className="text-lg md:text-xl text-gray-400 max-w-md leading-relaxed mb-12">
+            <p className="text-lg md:text-xl text-gray-500 max-w-md leading-relaxed mb-12 hover:text-gray-300 transition-colors">
               Detoxify vertically while you sculpt horizontally. Our panels heat the body directly, not the air, allowing for a deeper sweat at a lower temperature.
             </p>
             <div className="grid grid-cols-2 gap-8">
@@ -176,11 +176,34 @@ export default function Home() {
           />
           <div className="absolute inset-0 bg-black/40" />
         </div>
-        <div className="relative z-10 text-center text-white">
-          <h2 className={`${syne.className} text-[8vw] uppercase leading-none`}>The Studio</h2>
+        <div className="relative z-10 text-center text-white px-6">
+          <h2 className={`${syne.className} text-6xl md:text-[8vw] uppercase leading-none`}>The Studio</h2>
           <button className="mt-8 bg-white text-black px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">
             View Locations
           </button>
+        </div>
+      </section>
+
+      {/* Lead Capture Section */}
+      <section className="py-32 bg-black text-white px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className={`${syne.className} text-5xl md:text-7xl font-bold uppercase mb-8 leading-tight`}>
+            Start your <br />
+            <span className="font-serif italic font-light lowercase">hot</span> journey
+          </h2>
+          <p className="font-serif italic text-xl md:text-2xl text-white/60 mb-12 max-w-2xl mx-auto">
+            Join our community and get a free trial class in any of our studios. Discover the power of infrared barre.
+          </p>
+          <form className="flex flex-col md:flex-row gap-4 max-w-lg mx-auto" onSubmit={(e) => e.preventDefault()}>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="flex-1 bg-white/5 border border-white/20 px-6 py-4 rounded-full text-white placeholder:text-white/30 focus:outline-none focus:border-white transition-all"
+            />
+            <button className="bg-white text-black px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-transparent hover:text-white border border-white transition-all whitespace-nowrap">
+              Get Trial
+            </button>
+          </form>
         </div>
       </section>
 

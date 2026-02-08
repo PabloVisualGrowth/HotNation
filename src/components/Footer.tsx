@@ -19,9 +19,8 @@ export default function Footer() {
                         />
                     </div>
                     <div className="flex flex-col gap-2 text-sm text-gray-500">
-                        <Link href="#" className="hover:text-black">Terms & Conditions</Link>
-                        <Link href="#" className="hover:text-black">Privacy Policy</Link>
-                        <Link href="#" className="hover:text-black">Cookies</Link>
+                        <Link href="/privacy" className="hover:text-black">Privacy Policy</Link>
+                        <Link href="/cookies" className="hover:text-black">Cookies Policy</Link>
                     </div>
                 </div>
 

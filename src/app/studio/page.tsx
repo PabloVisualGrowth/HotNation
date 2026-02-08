@@ -28,7 +28,7 @@ export default function StudioPage() {
                     <div className="absolute inset-0 bg-black/30" />
                 </div>
                 <div className="relative z-10 text-center w-full max-w-7xl mx-auto px-6 mb-12">
-                    <h1 className={`${syne.className} text-[12vw] leading-[0.8] font-bold text-white uppercase`}>
+                    <h1 className={`${syne.className} text-7xl md:text-[12vw] leading-[0.8] font-bold text-white uppercase`}>
                         The Space
                     </h1>
                 </div>
@@ -43,19 +43,19 @@ export default function StudioPage() {
                 </p>
             </section>
 
-            <section className="grid grid-cols-1 md:grid-cols-2 h-[80vh]">
+            <section className="grid grid-cols-1 md:grid-cols-2 h-[80vh] group">
                 <div className="relative border-r border-black/5">
                     <Image
                         src="/img-ball.jpg"
                         alt="Equipment"
                         fill
-                        className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                        className="object-cover transition-all duration-700 grayscale group-hover:grayscale-0"
                         unoptimized
                     />
                 </div>
-                <div className="relative bg-[#bc3908] text-white p-12 md:p-24 flex flex-col justify-center">
-                    <h2 className={`${syne.className} text-6xl uppercase mb-8`}>Heat Panels</h2>
-                    <p className="text-xl font-serif italic opacity-90">
+                <div className="relative bg-black text-white p-12 md:p-24 flex flex-col justify-center transition-colors duration-700 group-hover:bg-[#bc3908]">
+                    <h2 className={`${syne.className} text-4xl md:text-6xl uppercase mb-8 transition-transform duration-700 group-hover:scale-105`}>Heat Panels</h2>
+                    <p className="text-xl font-serif italic opacity-50 group-hover:opacity-100 transition-opacity duration-700">
                         Operating at 35-40°C, our infrared heat penetrates 3cm deep into muscle tissue, increasing flexibility and calorie burn without the suffocating feeling of traditional hot yoga.
                     </p>
                 </div>

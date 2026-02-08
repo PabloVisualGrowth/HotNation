@@ -14,7 +14,7 @@ export default function PricingPage() {
             <Navbar />
 
             <header className="pt-40 pb-20 px-6 text-center">
-                <h1 className={`${syne.className} text-[10vw] leading-[0.8] font-bold uppercase mb-8`}>
+                <h1 className={`${syne.className} text-7xl md:text-[10vw] leading-[0.8] font-bold uppercase mb-8`}>
                     Invest<br />In Yourself
                 </h1>
                 <p className="font-serif italic text-xl max-w-2xl mx-auto border-t border-black pt-8">
@@ -32,13 +32,13 @@ export default function PricingPage() {
                         { name: "10 Pack", price: "210€", desc: "Valid for 6 months. Shareable.", highlight: false },
                         { name: "20 Pack", price: "380€", desc: "Valid for 12 months. Shareable.", highlight: false }
                     ].map((item, i) => (
-                        <div key={i} className={`p-12 border border-black/10 flex flex-col justify-between h-96 transition-colors duration-500 hover:bg-[#bc3908] hover:text-white group ${item.highlight ? 'bg-black text-white' : 'bg-[#FDF7E8]'}`}>
+                        <div key={i} className={`p-12 border border-black/10 flex flex-col justify-between h-96 transition-all duration-700 hover:bg-[#bc3908] hover:text-white group ${item.highlight ? 'bg-black text-white' : 'bg-white text-black'}`}>
                             <div>
                                 <h3 className="text-xs font-bold uppercase tracking-widest mb-4 opacity-70">{item.name}</h3>
-                                <div className={`${syne.className} text-6xl font-bold mb-4`}>{item.price}</div>
-                                <p className="font-serif italic opacity-80">{item.desc}</p>
+                                <div className={`${syne.className} text-6xl font-bold mb-4 transition-transform duration-700 group-hover:scale-105`}>{item.price}</div>
+                                <p className="font-serif italic opacity-60 group-hover:opacity-100 transition-opacity duration-700">{item.desc}</p>
                             </div>
-                            <button className={`w-full py-3 border text-xs font-bold uppercase tracking-widest transition-all ${item.highlight ? 'bg-white text-black border-white hover:bg-transparent hover:text-white' : 'border-black hover:border-white hover:bg-white hover:text-[#bc3908]'}`}>
+                            <button className={`w-full py-3 border text-xs font-bold uppercase tracking-widest transition-all ${item.highlight ? 'bg-white text-black border-white hover:bg-transparent hover:text-white' : 'border-black group-hover:border-white hover:bg-white hover:text-black'}`}>
                                 Purchase
                             </button>
                         </div>

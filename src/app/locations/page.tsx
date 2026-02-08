@@ -15,7 +15,7 @@ export default function LocationsPage() {
             <Navbar />
 
             <header className="pt-40 pb-20 px-6 text-center">
-                <h1 className={`${syne.className} text-[12vw] leading-[0.8] font-bold uppercase mb-8`}>
+                <h1 className={`${syne.className} text-7xl md:text-[12vw] leading-[0.8] font-bold uppercase mb-8`}>
                     Find Us
                 </h1>
             </header>
@@ -33,11 +33,11 @@ export default function LocationsPage() {
                                 unoptimized
                             />
                         </div>
-                        <div className="flex justify-between items-end border-b border-black pb-4 mb-4">
-                            <h2 className={`${syne.className} text-4xl uppercase`}>Eindhoven</h2>
-                            <span className="text-xs font-bold uppercase tracking-widest bg-black text-white px-3 py-1 rounded-full">Open</span>
+                        <div className="flex justify-between items-end border-b border-black pb-4 mb-4 transition-colors duration-700 group-hover:border-[#bc3908]">
+                            <h2 className={`${syne.className} text-4xl uppercase transition-colors duration-700 group-hover:text-[#bc3908]`}>Eindhoven</h2>
+                            <span className="text-xs font-bold uppercase tracking-widest bg-black text-white px-3 py-1 rounded-full group-hover:bg-[#bc3908] transition-colors duration-700">Open</span>
                         </div>
-                        <p className="font-serif italic text-lg mb-2">Stratumseind 32</p>
+                        <p className="font-serif italic text-lg mb-2 opacity-60 group-hover:opacity-100 transition-opacity duration-700">Stratumseind 32</p>
                         <p className="text-sm text-gray-600 mb-6">5611 ET Eindhoven, Netherlands</p>
                         <div className="flex gap-4">
                             <button className="text-xs font-bold uppercase tracking-widest border border-black px-6 py-2 hover:bg-black hover:text-white transition-colors rounded-full">
@@ -50,7 +50,7 @@ export default function LocationsPage() {
                     </div>
 
                     {/* Location 2 */}
-                    <div className="group md:mt-32">
+                    <div className="group md:mt-32 mt-12">
                         <div className="relative h-[60vh] w-full mb-8 overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
                             <Image
                                 src="/img-pose.jpg"
@@ -60,11 +60,11 @@ export default function LocationsPage() {
                                 unoptimized
                             />
                         </div>
-                        <div className="flex justify-between items-end border-b border-black pb-4 mb-4">
-                            <h2 className={`${syne.className} text-4xl uppercase`}>Rotterdam</h2>
-                            <span className="text-xs font-bold uppercase tracking-widest border border-black px-3 py-1 rounded-full">Coming Soon</span>
+                        <div className="flex justify-between items-end border-b border-black pb-4 mb-4 transition-colors duration-700 group-hover:border-[#bc3908]">
+                            <h2 className={`${syne.className} text-4xl uppercase transition-colors duration-700 group-hover:text-[#bc3908]`}>Rotterdam</h2>
+                            <span className="text-xs font-bold uppercase tracking-widest border border-black px-3 py-1 rounded-full group-hover:border-[#bc3908] group-hover:text-[#bc3908] transition-colors duration-700">Coming Soon</span>
                         </div>
-                        <p className="font-serif italic text-lg mb-2">Coolsingel 40</p>
+                        <p className="font-serif italic text-lg mb-2 opacity-60 group-hover:opacity-100 transition-opacity duration-700">Coolsingel 40</p>
                         <p className="text-sm text-gray-600 mb-6">3011 AD Rotterdam, Netherlands</p>
                         <div className="flex gap-4">
                             <button disabled className="text-xs font-bold uppercase tracking-widest border border-gray-300 text-gray-400 px-6 py-2 cursor-not-allowed rounded-full">
