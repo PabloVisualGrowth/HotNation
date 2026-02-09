@@ -13,7 +13,8 @@ export default function Navbar() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 100);
+            // Trigger sooner
+            setIsScrolled(window.scrollY > 50);
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
@@ -21,22 +22,18 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className={`fixed left-0 right-0 z-50 transition-all duration-700 ease-in-out ${isScrolled ? "top-[4vh] md:top-[6vh]" : "top-0"}`}>
+            {/* Navbar container that moves to vertical center on scroll */}
+            <nav className={`fixed left-0 right-0 z-50 transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${isScrolled ? "top-[50%] -translate-y-1/2 pointer-events-none" : "top-0 pointer-events-auto"}`}>
                 <div
                     className={`
-                        mx-auto transition-all duration-500 flex justify-between items-center text-[10px] md:text-xs font-bold uppercase tracking-widest
+                        mx-auto transition-all duration-700 flex justify-between items-center text-[10px] md:text-xs font-bold uppercase tracking-widest pointer-events-auto
                         ${isScrolled
-                            ? "w-[90%] md:w-[60%] bg-black/80 backdrop-blur-xl text-white px-6 py-3 rounded-full border border-white/10 shadow-2xl"
-                            : "w-full px-6 md:px-12 py-6 bg-transparent text-black border-b border-transparent"}
+                            ? "w-[95%] md:w-[800px] bg-black/80 backdrop-blur-2xl text-white px-8 py-4 rounded-full border border-white/10 shadow-2xl"
+                            : "w-full px-6 md:px-12 py-8 bg-gradient-to-b from-black/20 to-transparent text-black"}
                     `}
                 >
                     {/* Left - Logo */}
-                    {/* When scrolled, logo hides or becomes icon? User asked for "descend to center". 
-                        Usually this means the whole bar descends or a pill descends. 
-                        Let's keep the logo but maybe smaller or just icon if space is tight.
-                        For now, full logo but properly colored.
-                    */}
-                    <div className="flex items-center gap-2 relative w-32 h-6 md:h-8 shrink-0">
+                    <div className="flex items-center gap-2 relative w-24 h-5 md:w-32 md:h-6 shrink-0">
                         <Link href="/" className="hover:opacity-70 transition-opacity w-full h-full relative">
                             <Image
                                 src="/logo-new.png"
@@ -50,24 +47,39 @@ export default function Navbar() {
                     </div>
 
                     {/* Center - Links (Desktop) */}
-                    <div className={`hidden md:flex gap-4 lg:gap-8 items-center justify-center w-full ${isScrolled ? "text-white/90" : "text-black absolute left-1/2 -translate-x-1/2"}`}>
-                        <Link href="/" className="hover:text-white/60 transition-colors">Home</Link>
-                        <Link href="/method" className="hover:text-white/60 transition-colors">Method</Link>
-                        <Link href="/pricing" className={`px-3 py-1 rounded-full transition-colors ${isScrolled ? "bg-white text-black font-extrabold" : "bg-black text-white hover:bg-black/80"}`}>Pricing</Link>
-                        <Link href="/locations" className="hover:text-white/60 transition-colors">Locations</Link>
-                        <Link href="/studio" className="hover:text-white/60 transition-colors">About</Link>
-                        <Link href="/" className="hover:text-white/60 transition-colors">Bookings</Link>
+                    <div className={`hidden md:flex gap-1 items-center justify-center absolute left-1/2 -translate-x-1/2`}>
+                        {[
+                            { name: "Home", path: "/" },
+                            { name: "Method", path: "/method" },
+                            { name: "Pricing", path: "/pricing" },
+                            { name: "Locations", path: "/locations" },
+                            { name: "About", path: "/studio" },
+                            { name: "Bookings", path: "/bookings" } // Assuming /bookings exists or links to home
+                        ].map((link) => (
+                            <Link
+                                key={link.name}
+                                href={link.path}
+                                className={`
+                                    px-4 py-1.5 rounded-full transition-all duration-300
+                                    ${pathname === link.path
+                                        ? (isScrolled ? "bg-white text-black font-extrabold" : "bg-black text-white hover:bg-black/80")
+                                        : (isScrolled ? "text-white/70 hover:text-white" : "text-black/80 hover:text-black hover:bg-black/5")}
+                                `}
+                            >
+                                {link.name}
+                            </Link>
+                        ))}
                     </div>
 
                     {/* Right - Account & Menu */}
                     <div className="flex items-center gap-6 shrink-0 justify-end">
-                        <span className={`hidden md:flex gap-2 opacity-60 ${isScrolled ? "hidden" : "block"}`}>
+                        <span className={`hidden md:flex gap-2 opacity-60 ${isScrolled ? "text-white/60" : "text-black/60"}`}>
                             <button className="hover:opacity-100">ES</button>
                             <button className="hover:opacity-100">EN</button>
                             <button className="hover:opacity-100">CA</button>
                         </span>
 
-                        <button className={`hidden md:block hover:underline underline-offset-4 decoration-1 ${isScrolled ? "hidden" : "block"}`}>
+                        <button className={`hidden md:block hover:underline underline-offset-4 decoration-1 ${isScrolled ? "text-white" : "text-black"}`}>
                             My Account
                         </button>
 
