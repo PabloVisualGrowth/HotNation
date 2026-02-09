@@ -27,7 +27,7 @@ export default function Navbar() {
                     className={`
                         w-full flex justify-between items-center text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all duration-700
                         ${isScrolled
-                            ? "bg-[#E6DCD2] text-black py-4 px-6 md:px-12 border-y border-black/10 shadow-xl"
+                            ? "bg-[#E6DCD2]/50 text-black py-4 px-6 md:px-12 border-y border-black/10 shadow-none"
                             : "bg-transparent text-black py-8 px-6 md:px-12"}
                     `}
                 >
