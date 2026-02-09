@@ -19,39 +19,39 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 transform ${isScrolled ? "translate-y-0 opacity-100 bg-[#FDF7E8]/90 backdrop-blur-sm border-b border-black/5 py-2" : "-translate-y-full opacity-0 pointer-events-none py-4"}`}>
-                <div className="w-full px-6 md:px-12 flex justify-between items-center text-xs font-bold uppercase tracking-widest text-black">
-                    {/* Left - Small Logo (Inverted to Black) */}
-                    <div className="relative w-32 h-8">
+            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-[#FDF7E8] border-b border-black ${isScrolled ? "py-2" : "py-4 md:py-6"}`}>
+                <div className="w-full px-6 flex justify-between items-center text-xs font-bold uppercase tracking-widest text-black">
+                    {/* Left - Logo */}
+                    <div className="relative w-40 h-8 md:h-10">
                         <Link href="/">
                             <Image
                                 src="/logo-new.png"
                                 alt="Hot Nation"
                                 fill
-                                className="object-contain object-left invert"
+                                className="object-contain object-left invert" // Keeping invert because logo is white
                                 priority
                                 unoptimized
                             />
                         </Link>
                     </div>
 
-                    {/* Center - Links */}
+                    {/* Center - Links (Desktop) */}
                     <div className="hidden md:flex gap-12 absolute left-1/2 -translate-x-1/2">
-                        <Link href="/method" className="hover:opacity-50 transition-opacity">Method</Link>
-                        <Link href="/studio" className="hover:opacity-50 transition-opacity">Studio</Link>
-                        <Link href="/pricing" className="hover:opacity-50 transition-opacity">Pricing</Link>
-                        <Link href="/locations" className="hover:opacity-50 transition-opacity">Locations</Link>
+                        <Link href="/method" className="hover:italic transition-all">Method</Link>
+                        <Link href="/studio" className="hover:italic transition-all">Studio</Link>
+                        <Link href="/pricing" className="hover:italic transition-all">Pricing</Link>
+                        <Link href="/locations" className="hover:italic transition-all">Locations</Link>
                     </div>
 
                     {/* Right - Account & Menu */}
                     <div className="flex items-center gap-6">
-                        <button className="hidden md:block bg-black text-white px-5 py-2 rounded-full hover:bg-transparent hover:text-black border border-black transition-all">
+                        <button className="hidden md:block btn-concept-filled">
                             My Account
                         </button>
                         <button className="md:hidden" onClick={() => setIsMenuOpen(true)}>
-                            <Menu className="w-5 h-5" />
+                            <Menu className="w-6 h-6" />
                         </button>
-                        <span className="hidden md:inline">EN</span>
+                        <span className="hidden md:inline font-medium">EN</span>
                     </div>
                 </div>
             </nav>

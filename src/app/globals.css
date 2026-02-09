@@ -1,23 +1,26 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* MONOCHROME PALETTE */
+  /* CONCEPT BARRE PALETTE */
   --color-void: #000000;
-  --color-paper: #FFFFFF;
-  --color-glass: rgba(255, 255, 255, 0.1);
-  --color-glass-border: rgba(255, 255, 255, 0.2);
+  --color-paper: #FDF7E8;
+  --color-accent: #bc3908;
 
-  --color-primary: var(--color-paper);
-  --color-accent: var(--color-paper);
-  /* No more orange */
+  --color-border: #000000;
+  /* Strict black borders */
+
+  /* ALIASES */
+  --color-primary: var(--color-void);
+  --color-secondary: var(--color-paper);
 
   /* FONTS */
   --font-display: var(--font-display);
+  /* SYNE */
   --font-body: var(--font-body);
+  /* INTER */
 
   /* ANIMATIONS */
   --animate-marquee: marquee 30s linear infinite;
-  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 
   @keyframes marquee {
     0% {
@@ -31,31 +34,73 @@
 }
 
 body {
-  background-color: var(--color-void);
-  color: var(--color-paper);
+  background-color: var(--color-paper);
+  color: var(--color-void);
   font-family: var(--font-body);
   overflow-x: hidden;
 }
 
-/* Utilities */
-.glass-panel {
-  @apply backdrop-blur-xl bg-white/5 border border-white/10;
+/* --- CONCEPT GRID SYSTEM --- */
+/* The core of the aesthetic: 1px hard borders */
+
+.concept-border-b {
+  @apply border-b border-black;
 }
 
-.text-stroke {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+.concept-border-t {
+  @apply border-t border-black;
 }
 
-.text-stroke-strong {
-  -webkit-text-stroke: 2px rgba(255, 255, 255, 1);
+.concept-border-r {
+  @apply border-r border-black;
 }
 
-/* Texture Overlay */
+.concept-border-l {
+  @apply border-l border-black;
+}
+
+.concept-border {
+  @apply border border-black;
+}
+
+/* TYPOGRAPHY UTILITIES */
+.type-display-huge {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+.type-body-serif {
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+}
+
+/* BUTTONS */
+/* Pill-shaped, outlined, uppercase */
+.btn-concept {
+  @apply px-8 py-3 rounded-full border border-black text-xs font-bold uppercase tracking-widest transition-all duration-300;
+}
+
+.btn-concept:hover {
+  @apply bg-black text-white;
+}
+
+.btn-concept-filled {
+  @apply px-8 py-3 rounded-full bg-black text-white border border-black text-xs font-bold uppercase tracking-widest transition-all duration-300;
+}
+
+.btn-concept-filled:hover {
+  @apply bg-transparent text-black;
+}
+
+/* TEXTURE */
 .texture-overlay {
   position: fixed;
   inset: 0;
   z-index: 50;
   pointer-events: none;
-  opacity: 0.03;
+  opacity: 0.04;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
 }
