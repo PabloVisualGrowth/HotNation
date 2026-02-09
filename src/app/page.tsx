@@ -158,11 +158,11 @@ export default function Home() {
       {/* MARQUEE SECTION - Bordered */}
       <section className="border-b border-black overflow-hidden py-6 bg-black text-white">
         <div className="whitespace-nowrap animate-marquee flex items-center gap-12">
-          <span className="text-2xl md:text-4xl font-bold uppercase tracking-tighter">HOT CONCEPT &nbsp;—&nbsp; MADRID</span>
+          <span className="text-2xl md:text-4xl font-bold uppercase tracking-tighter">HOT CONCEPT &nbsp;—&nbsp; EINDHOVEN</span>
           <span className="text-2xl md:text-4xl font-serif italic">The Original</span>
           <span className="text-2xl md:text-4xl font-bold uppercase tracking-tighter">INFRARED BARRE &nbsp;—&nbsp; EST 2026</span>
           <span className="text-2xl md:text-4xl font-serif italic">Full Body</span>
-          <span className="text-2xl md:text-4xl font-bold uppercase tracking-tighter">HOT CONCEPT &nbsp;—&nbsp; MADRID</span>
+          <span className="text-2xl md:text-4xl font-bold uppercase tracking-tighter">HOT CONCEPT &nbsp;—&nbsp; ROTTERDAM</span>
           <span className="text-2xl md:text-4xl font-serif italic">The Original</span>
           <span className="text-2xl md:text-4xl font-bold uppercase tracking-tighter">INFRARED BARRE &nbsp;—&nbsp; EST 2026</span>
           <span className="text-2xl md:text-4xl font-serif italic">Full Body</span>
@@ -193,8 +193,8 @@ export default function Home() {
             </span>
           </div>
           <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full bg-gradient-to-t from-black/50 to-transparent text-white pointer-events-none">
-            <h3 className="type-display-huge text-4xl md:text-6xl">SALAMANCA</h3>
-            <p className="font-serif italic mt-2">Calle de Lagasca, Madrid</p>
+            <h3 className="type-display-huge text-4xl md:text-6xl">EINDHOVEN</h3>
+            <p className="font-serif italic mt-2">Stratumseind 32, Eindhoven</p>
           </div>
         </div>
 
@@ -220,8 +220,8 @@ export default function Home() {
             </span>
           </div>
           <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full bg-gradient-to-t from-black/50 to-transparent text-white pointer-events-none">
-            <h3 className="type-display-huge text-4xl md:text-6xl">CHAMBERÍ</h3>
-            <p className="font-serif italic mt-2">Calle de Almagro, Madrid</p>
+            <h3 className="type-display-huge text-4xl md:text-6xl">ROTTERDAM</h3>
+            <p className="font-serif italic mt-2">Coolsingel 40, Rotterdam</p>
           </div>
         </div>
       </section>

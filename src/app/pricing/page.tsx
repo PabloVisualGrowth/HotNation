@@ -99,7 +99,7 @@ export default function PricingPage() {
                                     <div className="flex justify-between items-start mb-8">
                                         <h3 className="text-xs font-bold uppercase tracking-widest">{item.name}</h3>
                                         {item.highlight && (
-                                            <span className="text-[10px] border border-white px-2 py-1 rounded-full uppercase tracking-widest">
+                                            <span className="text-[10px] glass-pill px-3 py-1 uppercase tracking-widest">
                                                 Best Value
                                             </span>
                                         )}
@@ -113,10 +113,11 @@ export default function PricingPage() {
                                 </div>
 
                                 <button className={`
-                                    w-full py-4 rounded-full text-xs font-bold uppercase tracking-widest border transition-all mt-8
+                                    w-full py-4 rounded-xl text-xs font-bold uppercase tracking-widest transition-all mt-8
+                                    backdrop-blur-md bg-white/10 border border-white/20
                                     ${item.highlight
-                                        ? 'border-white text-white hover:bg-white hover:text-black'
-                                        : 'border-black text-black group-hover:border-white group-hover:text-white hover:bg-white hover:text-black'}
+                                        ? 'text-white hover:bg-white hover:text-black'
+                                        : 'text-black group-hover:text-white hover:bg-white hover:text-black'}
                                 `}>
                                     Purchase
                                 </button>
