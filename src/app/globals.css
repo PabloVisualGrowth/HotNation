@@ -4,7 +4,8 @@
   /* CONCEPT BARRE PALETTE */
   --color-void: #000000;
   --color-paper: #FDF7E8;
-  --color-accent: #bc3908;
+  --color-accent: #c0301a;
+  /* Deep Terracotta Red */
 
   --color-border: #000000;
   /* Strict black borders */
@@ -69,7 +70,7 @@ body {
 }
 
 .glass-pill {
-  @apply backdrop-blur-xl bg-white/20 border border-white/30 rounded-full;
+  @apply backdrop-blur-xl bg-white/10 border border-white/20 rounded-full text-white uppercase font-bold tracking-widest text-[10px] px-6 py-2 transition-all hover:bg-white/20;
 }
 
 /* TYPOGRAPHY UTILITIES */
