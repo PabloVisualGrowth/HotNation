@@ -76,46 +76,47 @@ export default function PricingPage() {
 
             {/* PRICING GRID - Full Bleed Images with Red Overlay */}
             <section className="w-full">
-                {pricingItems.map((item, i) => (
-                    <div
-                        key={i}
-                        className="relative group h-[50vh] md:h-[60vh] overflow-hidden border-r border-b border-white/10 bg-black"
-                    >
-                        {/* Background Image - Default Grayscale, Color on Hover */}
-                        <Image
-                            src={item.image}
-                            alt={item.name}
-                            fill
-                            className="object-cover transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105"
-                            unoptimized
-                        />
+                <div className="grid grid-cols-1 md:grid-cols-3">
+                    {pricingItems.map((item, i) => (
+                        <div
+                            key={i}
+                            className="relative group h-[50vh] md:h-[60vh] overflow-hidden border-r border-b border-white/10 bg-black"
+                        >
+                            {/* Background Image - Default Grayscale, Color on Hover */}
+                            <Image
+                                src={item.image}
+                                alt={item.name}
+                                fill
+                                className="object-cover transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105"
+                                unoptimized
+                            />
 
-                        {/* Subtle dark overlay for text readability, clears up slightly on hover to reveal color */}
-                        <div className="absolute inset-0 bg-black/40 transition-opacity duration-500 group-hover:bg-black/20" />
+                            {/* Subtle dark overlay for text readability, clears up slightly on hover to reveal color */}
+                            <div className="absolute inset-0 bg-black/40 transition-opacity duration-500 group-hover:bg-black/20" />
 
-                        {/* Content */}
-                        <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6 z-10 text-white pointer-events-none">
-                            <span className="text-[10px] font-bold uppercase tracking-widest mb-2 opacity-80 shadow-black drop-shadow-md">
-                                {item.name}
-                            </span>
-                            <h2 className={`${syne.className} text-4xl md:text-5xl font-bold mb-2 shadow-black drop-shadow-md`}>
-                                {item.desc.includes("Pack") || item.desc.includes("Access") ? item.price : `${item.desc} – ${item.price}`}
-                            </h2>
+                            {/* Content */}
+                            <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6 z-10 text-white pointer-events-none">
+                                <span className="text-[10px] font-bold uppercase tracking-widest mb-2 opacity-80 shadow-black drop-shadow-md">
+                                    {item.name}
+                                </span>
+                                <h2 className={`${syne.className} text-4xl md:text-5xl font-bold mb-2 shadow-black drop-shadow-md`}>
+                                    {item.desc.includes("Pack") || item.desc.includes("Access") ? item.price : `${item.desc} – ${item.price}`}
+                                </h2>
+                            </div>
+
+                            {/* Floating Button - Glass Effect */}
+                            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 pointer-events-auto">
+                                <button className="glass-pill hover:scale-105 active:scale-95 transition-transform duration-300">
+                                    Comprar
+                                </button>
+                            </div>
                         </div>
+                    ))}
+                </div>
+            </section>
 
-                        {/* Floating Button - Glass Effect */}
-                        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 pointer-events-auto">
-                            <button className="glass-pill hover:scale-105 active:scale-95 transition-transform duration-300">
-                                Comprar
-                            </button>
-                        </div>
-                    </div>
-                ))}
-        </div>
-            </section >
-
-        {/* INFO SECTION */ }
-        < section className = "grid grid-cols-1 md:grid-cols-2 bg-[#FDF7E8] text-black" >
+            {/* INFO SECTION */}
+            < section className="grid grid-cols-1 md:grid-cols-2 bg-[#FDF7E8] text-black" >
                 <div className="p-12 md:p-24 flex flex-col justify-center border-b border-black md:border-b-0 md:border-r">
                     <h3 className={`${syne.className} text-4xl mb-6 uppercase`}>Private Sessions</h3>
                     <p className="font-serif italic text-lg mb-8">
@@ -136,7 +137,7 @@ export default function PricingPage() {
                 </div>
             </section >
 
-        <Footer />
+            <Footer />
         </div >
     );
 }
