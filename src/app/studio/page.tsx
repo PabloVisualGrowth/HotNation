@@ -29,7 +29,7 @@ export default function StudioPage() {
             <header className="relative w-full pt-20 border-b border-black">
                 <div className="grid grid-cols-1 md:grid-cols-2 h-[80vh]">
                     <div className="relative border-b md:border-b-0 md:border-r border-black flex flex-col justify-end p-8 md:p-12">
-                        <span className="text-xs font-bold uppercase tracking-widest block mb-6">Salamanca · Chamberí</span>
+                        <span className="text-xs font-bold uppercase tracking-widest block mb-6">Eindhoven · Rotterdam</span>
                         <h1 className="type-display-huge text-6xl md:text-8xl leading-[0.8] mb-8">
                             THE<br />SPACE
                         </h1>

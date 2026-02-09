@@ -36,11 +36,11 @@ export default function Navbar() {
                     </div>
 
                     {/* Center - Links (Desktop) */}
-                    <div className="hidden md:flex gap-12 absolute left-1/2 -translate-x-1/2">
-                        <Link href="/method" className="hover:italic transition-all">Method</Link>
-                        <Link href="/studio" className="hover:italic transition-all">Studio</Link>
-                        <Link href="/pricing" className="hover:italic transition-all">Pricing</Link>
-                        <Link href="/locations" className="hover:italic transition-all">Locations</Link>
+                    <div className="hidden md:flex gap-1 absolute left-1/2 -translate-x-1/2 bg-black/5 p-1 rounded-full border border-black/5 backdrop-blur-sm">
+                        <Link href="/method" className="px-5 py-2 rounded-full hover:bg-white/40 transition-all">Method</Link>
+                        <Link href="/studio" className="px-5 py-2 rounded-full hover:bg-white/40 transition-all">Studio</Link>
+                        <Link href="/pricing" className="px-5 py-2 rounded-full bg-white/60 shadow-sm transition-all">Pricing</Link>
+                        <Link href="/locations" className="px-5 py-2 rounded-full hover:bg-white/40 transition-all">Locations</Link>
                     </div>
 
                     {/* Right - Account & Menu */}

@@ -63,6 +63,15 @@ body {
   @apply border border-black;
 }
 
+/* FROST / GLASS EFFECT (Based on screenshot) */
+.glass-effect {
+  @apply backdrop-blur-md bg-black/5 border border-black/5;
+}
+
+.glass-pill {
+  @apply backdrop-blur-xl bg-white/20 border border-white/30 rounded-full;
+}
+
 /* TYPOGRAPHY UTILITIES */
 .type-display-huge {
   font-family: var(--font-display);

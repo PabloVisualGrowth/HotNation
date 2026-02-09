@@ -21,17 +21,17 @@ export default function LocationsPage() {
 
     const locations = [
         {
-            name: "Salamanca",
-            address: "Calle de Lagasca, Madrid",
-            desc: "The flagship. Two studios, private training room, and social space.",
+            name: "Eindhoven",
+            address: "Stratumseind 32, Eindhoven",
+            desc: "The original studio. Featuring the signature dark room and high-power infrared.",
             status: "Open Now",
             image: "/img-bridge.jpg",
             highlight: false
         },
         {
-            name: "Chamberí",
-            address: "Calle de Almagro, Madrid",
-            desc: "Intimate and focused. Specializing in private and semi-private sessions.",
+            name: "Rotterdam",
+            address: "Coolsingel 40, Rotterdam",
+            desc: "The new sanctuary. Coming soon to the heart of Rotterdam.",
             status: "Coming Soon",
             image: "/img-ball.jpg",
             highlight: true
