@@ -5,10 +5,20 @@ import { Syne } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const syne = Syne({ subsets: ["latin"], weight: ["400", "700", "800"] });
 
 export default function MethodPage() {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
     return (
         <div className="min-h-screen bg-[#FDF7E8] text-black overflow-x-hidden selection:bg-black selection:text-white">
             {/* Texture Overlay */}
@@ -33,18 +43,18 @@ export default function MethodPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center group">
                     <motion.div
                         initial={{ filter: "grayscale(100%)" }}
-                        whileInView={{ filter: "grayscale(0%)" }}
+                        whileInView={isMobile ? { filter: "grayscale(0%)" } : {}}
                         whileHover={{ filter: "grayscale(0%)" }}
                         viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
                         transition={{ duration: 0.7 }}
-                        className="relative h-[60vh] w-full overflow-hidden transition-all duration-700 md:grayscale md:hover:grayscale-0"
+                        className="relative h-[60vh] w-full overflow-hidden"
                     >
                         <Image src="/collage-1.jpg" alt="Infrared Heat" fill className="object-cover" unoptimized />
                     </motion.div>
                     <div className="flex flex-col justify-center group/text">
                         <motion.div
                             initial={{ color: "#6b7280" }}
-                            whileInView={{ color: "#bc3908" }}
+                            whileInView={isMobile ? { color: "#bc3908" } : {}}
                             viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
                         >
                             <div className="text-xs font-bold uppercase tracking-widest mb-4 opacity-50 group-hover/text:opacity-100 transition-opacity duration-700">01. Heat</div>
@@ -61,7 +71,7 @@ export default function MethodPage() {
                     <div className="flex flex-col justify-center order-2 md:order-1 group/text">
                         <motion.div
                             initial={{ color: "#6b7280" }}
-                            whileInView={{ color: "#bc3908" }}
+                            whileInView={isMobile ? { color: "#bc3908" } : {}}
                             viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
                         >
                             <div className="text-xs font-bold uppercase tracking-widest mb-4 opacity-50 group-hover/text:opacity-100 transition-opacity duration-700">02. Form</div>
@@ -73,7 +83,7 @@ export default function MethodPage() {
                     </div>
                     <motion.div
                         initial={{ filter: "grayscale(100%)" }}
-                        whileInView={{ filter: "grayscale(0%)" }}
+                        whileInView={isMobile ? { filter: "grayscale(0%)" } : {}}
                         whileHover={{ filter: "grayscale(0%)" }}
                         viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
                         transition={{ duration: 0.7 }}
@@ -87,7 +97,7 @@ export default function MethodPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center group">
                     <motion.div
                         initial={{ filter: "grayscale(100%)" }}
-                        whileInView={{ filter: "grayscale(0%)" }}
+                        whileInView={isMobile ? { filter: "grayscale(0%)" } : {}}
                         whileHover={{ filter: "grayscale(0%)" }}
                         viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
                         transition={{ duration: 0.7 }}
@@ -98,7 +108,7 @@ export default function MethodPage() {
                     <div className="flex flex-col justify-center group/text">
                         <motion.div
                             initial={{ color: "#6b7280" }}
-                            whileInView={{ color: "#bc3908" }}
+                            whileInView={isMobile ? { color: "#bc3908" } : {}}
                             viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
                         >
                             <div className="text-xs font-bold uppercase tracking-widest mb-4 opacity-50 group-hover/text:opacity-100 transition-opacity duration-700">03. Mind</div>

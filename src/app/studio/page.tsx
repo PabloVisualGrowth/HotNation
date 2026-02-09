@@ -5,10 +5,20 @@ import { Syne } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const syne = Syne({ subsets: ["latin"], weight: ["400", "700", "800"] });
 
 export default function StudioPage() {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
     return (
         <div className="min-h-screen bg-[#FDF7E8] text-black overflow-x-hidden selection:bg-black selection:text-white">
             <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] mix-blend-multiply bg-[url('/noise.svg')]"></div>
@@ -45,25 +55,26 @@ export default function StudioPage() {
             </section>
 
             <section className="grid grid-cols-1 md:grid-cols-2 md:h-[80vh] group">
-                <div className="relative border-r border-black/5 h-[70vh] md:h-full">
+                <motion.div
+                    initial={{ filter: "grayscale(100%)" }}
+                    whileInView={isMobile ? { filter: "grayscale(0%)" } : {}}
+                    whileHover={{ filter: "grayscale(0%)" }}
+                    viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
+                    transition={{ duration: 0.7 }}
+                    className="relative border-r border-black/5 h-[70vh] md:h-full"
+                >
                     <Image
                         src="/img-ball.jpg"
                         alt="Equipment"
                         fill
-                        className="object-cover transition-all duration-700 grayscale group-hover:grayscale-0"
+                        className="object-cover"
                         unoptimized
                     />
-                    <motion.div
-                        initial={{ opacity: 1 }}
-                        whileInView={{ opacity: 0 }}
-                        viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
-                        className="absolute inset-0 bg-white/10 pointer-events-none transition-opacity duration-700"
-                    />
-                </div>
+                </motion.div>
                 <div className="relative bg-black text-white p-12 md:p-24 flex flex-col justify-center transition-colors duration-700 group-hover:bg-[#bc3908]">
                     <motion.div
                         initial={false}
-                        whileInView={{ backgroundColor: "#bc3908" }}
+                        whileInView={isMobile ? { backgroundColor: "#bc3908" } : {}}
                         viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
                         className="absolute inset-0 transition-colors duration-700 pointer-events-none"
                     />

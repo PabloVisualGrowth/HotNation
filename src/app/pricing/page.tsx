@@ -4,10 +4,20 @@ import { Syne } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const syne = Syne({ subsets: ["latin"], weight: ["400", "700", "800"] });
 
 export default function PricingPage() {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
     return (
         <div className="min-h-screen bg-[#FDF7E8] text-black overflow-x-hidden selection:bg-black selection:text-white">
             <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] mix-blend-multiply bg-[url('/noise.svg')]"></div>
@@ -36,7 +46,7 @@ export default function PricingPage() {
                         <div key={i} className={`p-12 border border-black/10 flex flex-col justify-between h-96 transition-all duration-700 hover:bg-[#bc3908] hover:text-white group relative overflow-hidden ${item.highlight ? 'bg-black text-white' : 'bg-white text-black'}`}>
                             <motion.div
                                 initial={false}
-                                whileInView={{ opacity: 1, backgroundColor: "#bc3908" }}
+                                whileInView={isMobile ? { opacity: 1, backgroundColor: "#bc3908" } : {}}
                                 viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
                                 className="absolute inset-0 transition-colors duration-700 pointer-events-none opacity-0 group-hover:opacity-100 md:group-hover:opacity-100"
                             />

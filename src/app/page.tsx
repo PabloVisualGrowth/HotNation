@@ -13,6 +13,14 @@ const syne = Syne({ subsets: ["latin"], weight: ["400", "700", "800"] });
 export default function Home() {
   const { scrollY } = useScroll();
   const logoOpacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#FDF7E8] text-black overflow-x-hidden selection:bg-black selection:text-white">
@@ -105,7 +113,7 @@ export default function Home() {
           <div className="bg-black p-12 flex flex-col justify-between text-white relative group h-full transition-colors duration-700 hover:bg-[#bc3908]">
             <motion.div
               initial={false}
-              whileInView={{ backgroundColor: "#bc3908" }}
+              whileInView={isMobile ? { backgroundColor: "#bc3908" } : {}}
               viewport={{ amount: 0.2, margin: "-30% 0px -30% 0px" }}
               className="absolute inset-0 transition-colors duration-700 pointer-events-none"
             />
@@ -145,7 +153,7 @@ export default function Home() {
           <div className="relative bg-black text-white p-12 md:p-24 flex flex-col justify-center min-h-[60vh] md:min-h-0 transition-colors duration-700 hover:bg-[#1a1a1a]">
             <motion.div
               initial={false}
-              whileInView={{ backgroundColor: "#1a1a1a" }}
+              whileInView={isMobile ? { backgroundColor: "#1a1a1a" } : {}}
               viewport={{ amount: 0.2, margin: "-30% 0px -30% 0px" }}
               className="absolute inset-0 transition-colors duration-700 pointer-events-none"
             />
