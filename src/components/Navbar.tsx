@@ -19,39 +19,58 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? "bg-[#c0301a] text-white py-3 border-b border-black/10" : "bg-transparent text-black py-6 border-b border-transparent"}`}>
-                <div className="w-full px-6 md:px-12 flex justify-between items-center text-[10px] md:text-xs font-bold uppercase tracking-widest">
-                    {/* Left - Text Logo */}
-                    <div className="flex items-center gap-2">
-                        <Link href="/" className="hover:opacity-70 transition-opacity">
-                            Hot Concept <span className="mx-1">—</span> Barre
+            <nav className={`fixed left-0 right-0 z-50 transition-all duration-700 ease-in-out ${isScrolled ? "top-[4vh] md:top-[6vh]" : "top-0"}`}>
+                <div
+                    className={`
+                        mx-auto transition-all duration-500 flex justify-between items-center text-[10px] md:text-xs font-bold uppercase tracking-widest
+                        ${isScrolled
+                            ? "w-[90%] md:w-[60%] bg-black/80 backdrop-blur-xl text-white px-6 py-3 rounded-full border border-white/10 shadow-2xl"
+                            : "w-full px-6 md:px-12 py-6 bg-transparent text-black border-b border-transparent"}
+                    `}
+                >
+                    {/* Left - Logo */}
+                    {/* When scrolled, logo hides or becomes icon? User asked for "descend to center". 
+                        Usually this means the whole bar descends or a pill descends. 
+                        Let's keep the logo but maybe smaller or just icon if space is tight.
+                        For now, full logo but properly colored.
+                    */}
+                    <div className="flex items-center gap-2 relative w-32 h-6 md:h-8 shrink-0">
+                        <Link href="/" className="hover:opacity-70 transition-opacity w-full h-full relative">
+                            <Image
+                                src="/logo-new.png"
+                                alt="Hot Nation"
+                                fill
+                                className={`object-contain object-left ${isScrolled ? "invert filter brightness-0 invert" : "invert-0 filter brightness-0"}`}
+                                priority
+                                unoptimized
+                            />
                         </Link>
                     </div>
 
                     {/* Center - Links (Desktop) */}
-                    <div className="hidden md:flex gap-8 absolute left-1/2 -translate-x-1/2">
-                        <Link href="/" className="hover:opacity-60 transition-opacity">Home</Link>
-                        <Link href="/method" className="hover:opacity-60 transition-opacity">Method</Link>
-                        <Link href="/pricing" className="bg-black text-white px-3 py-1 rounded-full hover:bg-white hover:text-black transition-colors">Pricing</Link>
-                        <Link href="/locations" className="hover:opacity-60 transition-opacity">Locations</Link>
-                        <Link href="/studio" className="hover:opacity-60 transition-opacity">About</Link>
-                        <Link href="/" className="hover:opacity-60 transition-opacity">Bookings</Link>
+                    <div className={`hidden md:flex gap-4 lg:gap-8 items-center justify-center w-full ${isScrolled ? "text-white/90" : "text-black absolute left-1/2 -translate-x-1/2"}`}>
+                        <Link href="/" className="hover:text-white/60 transition-colors">Home</Link>
+                        <Link href="/method" className="hover:text-white/60 transition-colors">Method</Link>
+                        <Link href="/pricing" className={`px-3 py-1 rounded-full transition-colors ${isScrolled ? "bg-white text-black font-extrabold" : "bg-black text-white hover:bg-black/80"}`}>Pricing</Link>
+                        <Link href="/locations" className="hover:text-white/60 transition-colors">Locations</Link>
+                        <Link href="/studio" className="hover:text-white/60 transition-colors">About</Link>
+                        <Link href="/" className="hover:text-white/60 transition-colors">Bookings</Link>
                     </div>
 
                     {/* Right - Account & Menu */}
-                    <div className="flex items-center gap-6">
-                        <span className="hidden md:flex gap-2 opacity-60">
+                    <div className="flex items-center gap-6 shrink-0 justify-end">
+                        <span className={`hidden md:flex gap-2 opacity-60 ${isScrolled ? "hidden" : "block"}`}>
                             <button className="hover:opacity-100">ES</button>
                             <button className="hover:opacity-100">EN</button>
                             <button className="hover:opacity-100">CA</button>
                         </span>
 
-                        <button className="hidden md:block hover:underline underline-offset-4 decoration-1">
+                        <button className={`hidden md:block hover:underline underline-offset-4 decoration-1 ${isScrolled ? "hidden" : "block"}`}>
                             My Account
                         </button>
 
                         <button className="md:hidden" onClick={() => setIsMenuOpen(true)}>
-                            <Menu className="w-6 h-6" />
+                            <Menu className={`w-6 h-6 ${isScrolled ? "text-white" : "text-black"}`} />
                         </button>
                     </div>
                 </div>
