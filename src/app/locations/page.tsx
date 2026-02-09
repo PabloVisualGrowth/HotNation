@@ -19,95 +19,102 @@ export default function LocationsPage() {
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
 
+    const locations = [
+        {
+            name: "Salamanca",
+            address: "Calle de Lagasca, Madrid",
+            desc: "The flagship. Two studios, private training room, and social space.",
+            status: "Open Now",
+            image: "/img-bridge.jpg",
+            highlight: false
+        },
+        {
+            name: "Chamberí",
+            address: "Calle de Almagro, Madrid",
+            desc: "Intimate and focused. Specializing in private and semi-private sessions.",
+            status: "Coming Soon",
+            image: "/img-ball.jpg",
+            highlight: true
+        }
+    ];
+
     return (
         <div className="min-h-screen bg-[#FDF7E8] text-black overflow-x-hidden selection:bg-black selection:text-white">
-            <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] mix-blend-multiply bg-[url('/noise.svg')]"></div>
+            <div className="texture-overlay"></div>
 
             <Navbar />
 
-            <header className="pt-40 pb-20 px-6 text-center">
-                <h1 className={`${syne.className} text-7xl md:text-[12vw] leading-[0.8] font-bold uppercase mb-8`}>
-                    Find Us
-                </h1>
+            {/* HEADER */}
+            <header className="pt-32 pb-20 px-6 md:px-12 border-b border-black">
+                <div className="max-w-4xl">
+                    <span className="text-xs font-bold uppercase tracking-widest block mb-4">Madrid</span>
+                    <h1 className="type-display-huge text-6xl md:text-9xl leading-[0.8] mb-8">
+                        FIND US
+                    </h1>
+                    <p className="font-serif italic text-xl max-w-sm border-l border-black pl-6 py-2">
+                        Two iconic neighborhoods. One method.
+                    </p>
+                </div>
             </header>
 
-            <section className="px-6 pb-32 max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-                    {/* Location 1 */}
-                    <div className="group">
-                        <motion.div
-                            initial={{ filter: "grayscale(100%)" }}
-                            whileInView={isMobile ? { filter: "grayscale(0%)" } : {}}
-                            whileHover={{ filter: "grayscale(0%)" }}
-                            viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
-                            transition={{ duration: 0.7 }}
-                            className="relative h-[60vh] w-full mb-8 overflow-hidden"
-                        >
-                            <Image
-                                src="/img-bridge.jpg"
-                                alt="Eindhoven Studio"
-                                fill
-                                className="object-cover group-hover:scale-105 transition-transform duration-700"
-                                unoptimized
-                            />
-                        </motion.div>
-                        <motion.div
-                            initial={{ color: "black", borderColor: "black" }}
-                            whileInView={isMobile ? { color: "#bc3908", borderColor: "#bc3908" } : {}}
-                            viewport={{ amount: 0.1, margin: "-10% 0px -30% 0px" }}
-                            className="flex justify-between items-end border-b pb-4 mb-4 transition-colors duration-700 group-hover:border-[#bc3908]"
-                        >
-                            <h2 className={`${syne.className} text-4xl uppercase transition-colors duration-700 group-hover:text-[#bc3908]`}>Eindhoven</h2>
-                            <span className="text-xs font-bold uppercase tracking-widest bg-black text-white px-3 py-1 rounded-full group-hover:bg-[#bc3908] transition-colors duration-700">Open</span>
-                        </motion.div>
-                        <p className="font-serif italic text-lg mb-2 opacity-60 group-hover:opacity-100 transition-opacity duration-700">Stratumseind 32</p>
-                        <p className="text-sm text-gray-600 mb-6">5611 ET Eindhoven, Netherlands</p>
-                        <div className="flex gap-4">
-                            <button className="text-xs font-bold uppercase tracking-widest border border-black px-6 py-2 hover:bg-black hover:text-white transition-colors rounded-full">
-                                View Schedule
-                            </button>
-                            <button className="text-xs font-bold uppercase tracking-widest underline underline-offset-4 hover:no-underline">
-                                Get Directions
-                            </button>
-                        </div>
-                    </div>
+            {/* LOCATIONS GRID */}
+            <section className="border-b border-black">
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                    {locations.map((loc, i) => (
+                        <div key={i} className="group md:border-r border-black last:border-r-0 border-b md:border-b-0">
+                            {/* Image Part */}
+                            <div className="relative h-[50vh] overflow-hidden border-b border-black">
+                                <motion.div
+                                    initial={{ filter: "grayscale(100%)" }}
+                                    whileInView={isMobile ? { filter: "grayscale(0%)" } : {}}
+                                    whileHover={{ filter: "grayscale(0%)" }}
+                                    viewport={{ amount: 0.2, margin: "-30% 0px -30% 0px" }}
+                                    className="absolute inset-0"
+                                >
+                                    <Image
+                                        src={loc.image}
+                                        alt={loc.name}
+                                        fill
+                                        className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                                        unoptimized
+                                    />
+                                </motion.div>
+                                <div className="absolute top-6 left-6">
+                                    <span className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-black ${loc.highlight ? 'bg-[#bc3908] text-white' : 'bg-white text-black'}`}>
+                                        {loc.status}
+                                    </span>
+                                </div>
+                            </div>
 
-                    {/* Location 2 */}
-                    <div className="group md:mt-32 mt-12">
-                        <motion.div
-                            initial={{ filter: "grayscale(100%)" }}
-                            whileInView={isMobile ? { filter: "grayscale(0%)" } : {}}
-                            whileHover={{ filter: "grayscale(0%)" }}
-                            viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
-                            transition={{ duration: 0.7 }}
-                            className="relative h-[60vh] w-full mb-8 overflow-hidden"
-                        >
-                            <Image
-                                src="/img-pose.jpg"
-                                alt="Rotterdam Studio"
-                                fill
-                                className="object-cover group-hover:scale-105 transition-transform duration-700"
-                                unoptimized
-                            />
-                        </motion.div>
-                        <motion.div
-                            initial={{ color: "black", borderColor: "black" }}
-                            whileInView={isMobile ? { color: "#bc3908", borderColor: "#bc3908" } : {}}
-                            viewport={{ amount: 0.1, margin: "-10% 0px -30% 0px" }}
-                            className="flex justify-between items-end border-b pb-4 mb-4 transition-colors duration-700 group-hover:border-[#bc3908]"
-                        >
-                            <h2 className={`${syne.className} text-4xl uppercase transition-colors duration-700 group-hover:text-[#bc3908]`}>Rotterdam</h2>
-                            <span className="text-xs font-bold uppercase tracking-widest border border-black px-3 py-1 rounded-full group-hover:border-[#bc3908] group-hover:text-[#bc3908] transition-colors duration-700">Coming Soon</span>
-                        </motion.div>
-                        <p className="font-serif italic text-lg mb-2 opacity-60 group-hover:opacity-100 transition-opacity duration-700">Coolsingel 40</p>
-                        <p className="text-sm text-gray-600 mb-6">3011 AD Rotterdam, Netherlands</p>
-                        <div className="flex gap-4">
-                            <button disabled className="text-xs font-bold uppercase tracking-widest border border-gray-300 text-gray-400 px-6 py-2 cursor-not-allowed rounded-full">
-                                Waitlist Only
-                            </button>
+                            {/* Text Part */}
+                            <div className="p-8 md:p-12 transition-colors duration-500 hover:bg-black hover:text-white h-full">
+                                <h2 className="type-display-huge text-5xl mb-4 group-hover:text-[#bc3908] transition-colors">{loc.name}</h2>
+                                <p className="font-serif italic text-xl mb-4">{loc.address}</p>
+                                <p className="opacity-70 mb-8 max-w-sm">{loc.desc}</p>
+
+                                <div className="flex flex-col md:flex-row gap-4">
+                                    <button className="text-xs font-bold uppercase tracking-widest border border-current px-8 py-3 rounded-full hover:bg-white hover:text-black transition-colors">
+                                        View Schedule
+                                    </button>
+                                    <button className="text-xs font-bold uppercase tracking-widest border border-transparent px-8 py-3 rounded-full hover:border-current transition-colors opacity-70 hover:opacity-100">
+                                        Get Directions
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    ))}
                 </div>
+            </section>
+
+            {/* MAP PLACEHOLDER / CONTACT */}
+            <section className="bg-black text-white py-24 md:py-32 px-6 md:px-12 text-center">
+                <h2 className="type-display-huge text-4xl md:text-6xl mb-8">CONTACT US</h2>
+                <p className="font-serif italic text-xl text-white/70 max-w-2xl mx-auto mb-12">
+                    Questions about memberships, private events, or press inquiries? We are here to help.
+                </p>
+                <a href="mailto:hello@hotconcept.com" className="text-xl md:text-2xl font-bold uppercase tracking-widest border-b border-white pb-2 hover:text-[#bc3908] hover:border-[#bc3908] transition-colors">
+                    hello@hotconcept.com
+                </a>
             </section>
 
             <Footer />
