@@ -36,10 +36,10 @@ export default function Home() {
               Est. 2026 — The Netherlands
             </div>
 
-            <div className="relative z-10 max-w-[90%]">
-              <h1 className="type-display-huge text-6xl md:text-7xl lg:text-8xl mb-6 break-words">
+            <div className="relative z-10 max-w-[85%] md:max-w-[80%]">
+              <h1 className="type-display-huge text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight">
                 HOT<br />
-                CONCEPT
+                <span className="whitespace-nowrap">CONCEPT</span>
               </h1>
               <p className="text-lg md:text-xl font-serif italic max-w-md leading-relaxed">
                 The original infrared heated barre studio.
