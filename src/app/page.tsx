@@ -33,7 +33,7 @@ export default function Home() {
           {/* Col 1: Text & Statement */}
           <div className="col-span-1 md:col-span-2 flex flex-col justify-between p-6 md:p-12 border-b md:border-b-0 md:border-r border-black relative">
             <div className="uppercase text-xs font-bold tracking-widest mb-12">
-              Est. 2026 — Madrid
+              Est. 2026 — The Netherlands
             </div>
 
             <div className="relative z-10">

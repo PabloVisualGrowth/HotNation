@@ -47,7 +47,7 @@ export default function LocationsPage() {
             {/* HEADER */}
             <header className="pt-32 pb-20 px-6 md:px-12 border-b border-black">
                 <div className="max-w-4xl">
-                    <span className="text-xs font-bold uppercase tracking-widest block mb-4">Madrid</span>
+                    <span className="text-xs font-bold uppercase tracking-widest block mb-4">The Netherlands</span>
                     <h1 className="type-display-huge text-6xl md:text-9xl leading-[0.8] mb-8">
                         FIND US
                     </h1>
