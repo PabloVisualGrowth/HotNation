@@ -19,106 +19,120 @@ export default function MethodPage() {
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
 
+    const pillars = [
+        {
+            id: "01",
+            title: "Infrared",
+            subtitle: "The Science",
+            desc: "Unlike traditional hot yoga (which heats the air), our infrared panels heat your body directly. This penetrates 3cm into muscle tissue, promoting deep detoxification, increased flexibility, and massive calorie burn.",
+            image: "/collage-1.jpg",
+            alt: "Infrared Heat"
+        },
+        {
+            id: "02",
+            title: "Barre",
+            subtitle: "The Form",
+            desc: "Small, isometric movements designed to fatigue muscles to the point of failure. We use the ballet barre for stability, focusing on high reps and low impact to sculpt long, lean muscles.",
+            image: "/collage-3.jpg",
+            alt: "Barre Form"
+        },
+        {
+            id: "03",
+            title: "Focus",
+            subtitle: "The Mind",
+            desc: "The dark room, the curated playlists, and the intensity of the heat create a meditative state. You leave the outside world at the door and connect entirely with your breath.",
+            image: "/collage-5.jpg",
+            alt: "Mindset"
+        }
+    ];
+
     return (
         <div className="min-h-screen bg-[#FDF7E8] text-black overflow-x-hidden selection:bg-black selection:text-white">
-            {/* Texture Overlay */}
-            <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] mix-blend-multiply bg-[url('/noise.svg')]"></div>
+            <div className="texture-overlay"></div>
 
             <Navbar />
 
-            {/* Hero */}
-            <header className="relative pt-40 pb-20 px-6 text-center">
-                <h1 className={`${syne.className} text-7xl md:text-[12vw] leading-[0.8] font-bold uppercase mb-8`}>
-                    The<br />Method
-                </h1>
-                <p className="font-serif italic text-xl max-w-2xl mx-auto border-t border-black pt-8">
-                    Sculpt. Detox. Focus.
-                </p>
+            {/* HEADER */}
+            <header className="pt-32 pb-20 px-6 md:px-12 border-b border-black">
+                <div className="max-w-4xl">
+                    <span className="text-xs font-bold uppercase tracking-widest block mb-4">The Work. The Sweat. The Results.</span>
+                    <h1 className="type-display-huge text-6xl md:text-9xl leading-[0.8] mb-8">
+                        THE METHOD
+                    </h1>
+                    <p className="font-serif italic text-xl max-w-xl pl-6 border-l border-black">
+                        A unique fusion of pilates, dance, and functional training practiced in an infrared heated room.
+                    </p>
+                </div>
             </header>
 
-            {/* 3 Pillars */}
-            <section className="px-6 py-12 max-w-7xl mx-auto space-y-24">
+            {/* PILLARS GRID */}
+            <section className="border-b border-black">
+                {pillars.map((pillar, index) => (
+                    <div key={pillar.id} className="grid grid-cols-1 md:grid-cols-2 group">
 
-                {/* Pillar 1: Infrared */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center group">
-                    <motion.div
-                        initial={{ filter: "grayscale(100%)" }}
-                        whileInView={isMobile ? { filter: "grayscale(0%)" } : {}}
-                        whileHover={{ filter: "grayscale(0%)" }}
-                        viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
-                        transition={{ duration: 0.7 }}
-                        className="relative h-[60vh] w-full overflow-hidden"
-                    >
-                        <Image src="/collage-1.jpg" alt="Infrared Heat" fill className="object-cover" unoptimized />
-                    </motion.div>
-                    <div className="flex flex-col justify-center group/text">
-                        <motion.div
-                            initial={{ color: "#6b7280" }}
-                            whileInView={isMobile ? { color: "#bc3908" } : {}}
-                            viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
-                        >
-                            <div className="text-xs font-bold uppercase tracking-widest mb-4 opacity-50 group-hover/text:opacity-100 transition-opacity duration-700">01. Heat</div>
-                            <h2 className={`${syne.className} text-4xl md:text-6xl uppercase mb-6 transition-colors duration-700 group-hover/text:text-[#bc3908]`}>Infrared</h2>
-                        </motion.div>
-                        <p className="font-serif italic text-lg leading-relaxed text-gray-500 group-hover/text:text-gray-800 transition-colors duration-700">
-                            Unlike traditional hot yoga (which heats the air), our infrared panels heat your body directly. This penetrates 3cm into muscle tissue, promoting deep detoxification, increased flexibility, and massive calorie burn without the suffocating humidity.
-                        </p>
-                    </div>
-                </div>
+                        {/* Text Column - Alternates order on Desktop */}
+                        <div className={`
+                            relative flex flex-col justify-center p-12 md:p-24 border-b border-black md:border-b-0 
+                            ${index % 2 === 0 ? 'md:order-1 md:border-r' : 'md:order-2'}
+                            transition-colors duration-700 hover:bg-[#bc3908] hover:text-white
+                        `}>
+                            <motion.div
+                                initial={false}
+                                whileInView={isMobile ? { backgroundColor: "#bc3908", color: "#ffffff" } : {}}
+                                viewport={{ amount: 0.2, margin: "-20% 0px -20% 0px" }}
+                                className="absolute inset-0 transition-colors duration-700 pointer-events-none md:hidden"
+                            />
 
-                {/* Pillar 2: Barre */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center md:flex-row-reverse group">
-                    <div className="flex flex-col justify-center order-2 md:order-1 group/text">
-                        <motion.div
-                            initial={{ color: "#6b7280" }}
-                            whileInView={isMobile ? { color: "#bc3908" } : {}}
-                            viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
-                        >
-                            <div className="text-xs font-bold uppercase tracking-widest mb-4 opacity-50 group-hover/text:opacity-100 transition-opacity duration-700">02. Form</div>
-                            <h2 className={`${syne.className} text-4xl md:text-6xl uppercase mb-6 transition-colors duration-700 group-hover/text:text-[#bc3908]`}>Barre</h2>
-                        </motion.div>
-                        <p className="font-serif italic text-lg leading-relaxed text-gray-500 group-hover/text:text-gray-800 transition-colors duration-700">
-                            Small, isometric movements designed to fatigue muscles to the point of failure. We use the ballet barre for stability, focusing on high reps and low impact to sculpt long, lean muscles.
-                        </p>
-                    </div>
-                    <motion.div
-                        initial={{ filter: "grayscale(100%)" }}
-                        whileInView={isMobile ? { filter: "grayscale(0%)" } : {}}
-                        whileHover={{ filter: "grayscale(0%)" }}
-                        viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
-                        transition={{ duration: 0.7 }}
-                        className="relative h-[60vh] w-full overflow-hidden order-1 md:order-2"
-                    >
-                        <Image src="/collage-3.jpg" alt="Barre Form" fill className="object-cover" unoptimized />
-                    </motion.div>
-                </div>
+                            <div className="relative z-10 pointer-events-none">
+                                <div className="flex items-center gap-4 mb-8">
+                                    <span className="text-xs font-bold uppercase tracking-widest border border-black group-hover:border-white px-3 py-1 rounded-full">
+                                        {pillar.id}
+                                    </span>
+                                    <span className="font-serif italic text-lg">{pillar.subtitle}</span>
+                                </div>
+                                <h2 className="type-display-huge text-5xl md:text-7xl mb-6">
+                                    {pillar.title}
+                                </h2>
+                                <p className="font-sans text-lg opacity-80 leading-relaxed max-w-md">
+                                    {pillar.desc}
+                                </p>
+                            </div>
+                        </div>
 
-                {/* Pillar 3: Mind */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center group">
-                    <motion.div
-                        initial={{ filter: "grayscale(100%)" }}
-                        whileInView={isMobile ? { filter: "grayscale(0%)" } : {}}
-                        whileHover={{ filter: "grayscale(0%)" }}
-                        viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
-                        transition={{ duration: 0.7 }}
-                        className="relative h-[60vh] w-full overflow-hidden"
-                    >
-                        <Image src="/collage-5.jpg" alt="Mindset" fill className="object-cover" unoptimized />
-                    </motion.div>
-                    <div className="flex flex-col justify-center group/text">
-                        <motion.div
-                            initial={{ color: "#6b7280" }}
-                            whileInView={isMobile ? { color: "#bc3908" } : {}}
-                            viewport={{ amount: 0.1, margin: "-30% 0px -30% 0px" }}
-                        >
-                            <div className="text-xs font-bold uppercase tracking-widest mb-4 opacity-50 group-hover/text:opacity-100 transition-opacity duration-700">03. Mind</div>
-                            <h2 className={`${syne.className} text-4xl md:text-6xl uppercase mb-6 transition-colors duration-700 group-hover/text:text-[#bc3908]`}>Focus</h2>
-                        </motion.div>
-                        <p className="font-serif italic text-lg leading-relaxed text-gray-500 group-hover/text:text-gray-800 transition-colors duration-700">
-                            The dark room, the curated playlists, and the intensity of the heat create a meditative state. You leave the outside world at the door and connect entirely with your breath and movement.
-                        </p>
+                        {/* Image Column */}
+                        <div className={`
+                            relative h-[60vh] md:h-auto border-b md:border-b-0 border-black overflow-hidden
+                            ${index % 2 === 0 ? 'md:order-2' : 'md:order-1 md:border-r'}
+                        `}>
+                            <motion.div
+                                initial={{ filter: "grayscale(100%)" }}
+                                whileInView={isMobile ? { filter: "grayscale(0%)" } : {}}
+                                whileHover={{ filter: "grayscale(0%)" }}
+                                viewport={{ amount: 0.2, margin: "-30% 0px -30% 0px" }}
+                                className="absolute inset-0"
+                            >
+                                <Image
+                                    src={pillar.image}
+                                    alt={pillar.alt}
+                                    fill
+                                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                                    unoptimized
+                                />
+                            </motion.div>
+                        </div>
                     </div>
-                </div>
+                ))}
+            </section>
+
+            {/* SCHEDULE CTA */}
+            <section className="py-24 md:py-32 px-6 text-center bg-black text-white">
+                <span className="text-xs font-bold uppercase tracking-widest block mb-6 text-[#bc3908]">Ready to sweat?</span>
+                <h2 className="type-display-huge text-4xl md:text-8xl mb-12">
+                    BOOK YOUR MAT
+                </h2>
+                <button className="btn-concept border-white text-white hover:bg-white hover:text-black">
+                    View Schedule
+                </button>
             </section>
 
             <Footer />
