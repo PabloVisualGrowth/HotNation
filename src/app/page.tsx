@@ -36,8 +36,8 @@ export default function Home() {
               Est. 2026 — The Netherlands
             </div>
 
-            <div className="relative z-10">
-              <h1 className="type-display-huge text-6xl md:text-8xl mb-6">
+            <div className="relative z-10 max-w-[90%]">
+              <h1 className="type-display-huge text-6xl md:text-7xl lg:text-8xl mb-6 break-words">
                 HOT<br />
                 CONCEPT
               </h1>
