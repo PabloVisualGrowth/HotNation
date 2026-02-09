@@ -13,8 +13,7 @@ export default function Navbar() {
 
     useEffect(() => {
         const handleScroll = () => {
-            // Trigger sooner
-            setIsScrolled(window.scrollY > 50);
+            setIsScrolled(window.scrollY > 100);
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
@@ -22,14 +21,14 @@ export default function Navbar() {
 
     return (
         <>
-            {/* Navbar container that moves to vertical center on scroll */}
-            <nav className={`fixed left-0 right-0 z-50 transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${isScrolled ? "top-[50%] -translate-y-1/2 pointer-events-none" : "top-0 pointer-events-auto"}`}>
+            {/* Navbar container - Full width strip that moves to vertical center */}
+            <nav className={`fixed left-0 right-0 z-50 transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${isScrolled ? "top-[50%] -translate-y-1/2" : "top-0"}`}>
                 <div
                     className={`
-                        mx-auto transition-all duration-700 flex justify-between items-center text-[10px] md:text-xs font-bold uppercase tracking-widest pointer-events-auto
+                        w-full flex justify-between items-center text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all duration-700
                         ${isScrolled
-                            ? "w-[95%] md:w-[800px] bg-black/80 backdrop-blur-2xl text-white px-8 py-4 rounded-full border border-white/10 shadow-2xl"
-                            : "w-full px-6 md:px-12 py-8 bg-gradient-to-b from-black/20 to-transparent text-black"}
+                            ? "bg-[#E6DCD2]/90 backdrop-blur-md text-black py-4 px-6 md:px-12 shadow-xl border-y border-black/5"
+                            : "bg-transparent text-black py-8 px-6 md:px-12"}
                     `}
                 >
                     {/* Left - Logo */}
@@ -39,7 +38,7 @@ export default function Navbar() {
                                 src="/logo-new.png"
                                 alt="Hot Nation"
                                 fill
-                                className={`object-contain object-left ${isScrolled ? "invert filter brightness-0 invert" : "invert-0 filter brightness-0"}`}
+                                className={`object-contain object-left ${isScrolled ? "invert-0 filter brightness-0" : "invert-0 filter brightness-0"}`}
                                 priority
                                 unoptimized
                             />
@@ -47,44 +46,45 @@ export default function Navbar() {
                     </div>
 
                     {/* Center - Links (Desktop) */}
-                    <div className={`hidden md:flex gap-1 items-center justify-center absolute left-1/2 -translate-x-1/2`}>
+                    <div className={`hidden md:flex gap-8 items-center justify-center absolute left-1/2 -translate-x-1/2`}>
                         {[
                             { name: "Home", path: "/" },
                             { name: "Method", path: "/method" },
                             { name: "Pricing", path: "/pricing" },
                             { name: "Locations", path: "/locations" },
                             { name: "About", path: "/studio" },
-                            { name: "Bookings", path: "/bookings" } // Assuming /bookings exists or links to home
+                            { name: "Bookings", path: "/bookings" }
                         ].map((link) => (
                             <Link
                                 key={link.name}
                                 href={link.path}
                                 className={`
-                                    px-4 py-1.5 rounded-full transition-all duration-300
-                                    ${pathname === link.path
-                                        ? (isScrolled ? "bg-white text-black font-extrabold" : "bg-black text-white hover:bg-black/80")
-                                        : (isScrolled ? "text-white/70 hover:text-white" : "text-black/80 hover:text-black hover:bg-black/5")}
+                                    px-2 py-1 transition-all duration-300 relative group
+                                    ${pathname === link.path ? "font-black" : "font-medium hover:opacity-60"}
                                 `}
                             >
                                 {link.name}
+                                {pathname === link.path && (
+                                    <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-black" />
+                                )}
                             </Link>
                         ))}
                     </div>
 
                     {/* Right - Account & Menu */}
                     <div className="flex items-center gap-6 shrink-0 justify-end">
-                        <span className={`hidden md:flex gap-2 opacity-60 ${isScrolled ? "text-white/60" : "text-black/60"}`}>
+                        <span className="hidden md:flex gap-4 opacity-60 text-black">
                             <button className="hover:opacity-100">ES</button>
                             <button className="hover:opacity-100">EN</button>
                             <button className="hover:opacity-100">CA</button>
                         </span>
 
-                        <button className={`hidden md:block hover:underline underline-offset-4 decoration-1 ${isScrolled ? "text-white" : "text-black"}`}>
+                        <button className="hidden md:block hover:underline underline-offset-4 decoration-1 text-black">
                             My Account
                         </button>
 
                         <button className="md:hidden" onClick={() => setIsMenuOpen(true)}>
-                            <Menu className={`w-6 h-6 ${isScrolled ? "text-white" : "text-black"}`} />
+                            <Menu className="w-6 h-6 text-black" />
                         </button>
                     </div>
                 </div>
