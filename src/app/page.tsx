@@ -6,13 +6,11 @@ import { useState, useEffect } from "react";
 import { Syne } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 
 const syne = Syne({ subsets: ["latin"], weight: ["400", "700", "800"] });
 
 export default function Home() {
-  const { scrollY } = useScroll();
-  const logoOpacity = useTransform(scrollY, [0, 300], [1, 0]);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -24,210 +22,207 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#FDF7E8] text-black overflow-x-hidden selection:bg-black selection:text-white">
-      <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] mix-blend-multiply bg-[url('/noise.svg')]"></div>
+      <div className="texture-overlay"></div>
 
       <Navbar />
 
-      {/* Hero Section */}
-      <header className="relative h-screen w-full flex flex-col justify-end pb-20 items-center overflow-hidden bg-black">
-        {/* Background Grid - Collage of 5 Images - Responsive */}
-        <div className="absolute inset-0 z-0 grid grid-cols-2 md:grid-cols-3 gap-1 opacity-80">
-          {/* Column 1 - Hidden on small mobile or simplified */}
-          <div className="hidden md:flex flex-col gap-1">
-            <div className="relative h-1/2 w-full">
-              <Image src="/collage-1.jpg" alt="Hot Nation 1" fill className="object-cover" priority unoptimized />
+      {/* HERO SECTION - Strict Grid Mosaic */}
+      <header className="relative w-full pt-20 md:pt-28 border-b border-black">
+        <div className="grid grid-cols-1 md:grid-cols-4 h-auto md:h-[85vh]">
+
+          {/* Col 1: Text & Statement */}
+          <div className="col-span-1 md:col-span-2 flex flex-col justify-between p-6 md:p-12 border-b md:border-b-0 md:border-r border-black relative">
+            <div className="uppercase text-xs font-bold tracking-widest mb-12">
+              Est. 2026 — Madrid
             </div>
-            <div className="relative h-1/2 w-full">
-              <Image src="/collage-2.jpg" alt="Hot Nation 2" fill className="object-cover" priority unoptimized />
+
+            <div className="relative z-10">
+              <h1 className="type-display-huge text-6xl md:text-8xl mb-6">
+                HOT<br />
+                CONCEPT
+              </h1>
+              <p className="text-lg md:text-xl font-serif italic max-w-md leading-relaxed">
+                The original infrared heated barre studio.
+                Precision meets heat in a transformative full-body experience.
+              </p>
             </div>
-          </div>
 
-          {/* Column 2 - Center Focus */}
-          <div className="relative h-full w-full col-span-2 md:col-span-1">
-            <Image src="/collage-3.jpg" alt="Hot Nation 3" fill className="object-cover" priority unoptimized />
-          </div>
-
-          {/* Column 3 - Hidden on small mobile */}
-          <div className="hidden md:flex flex-col gap-1">
-            <div className="relative h-2/3 w-full">
-              <Image src="/collage-4.jpg" alt="Hot Nation 4" fill className="object-cover" priority unoptimized />
-            </div>
-            <div className="relative h-1/3 w-full">
-              <Image src="/collage-5.jpg" alt="Hot Nation 5" fill className="object-cover" priority unoptimized />
-            </div>
-          </div>
-
-          {/* Dark Overlay for Text Readability */}
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-
-        {/* Hero Content - Fading Gradient Logo */}
-        <motion.div
-          style={{ opacity: logoOpacity }}
-          className="relative z-10 w-full max-w-4xl mx-auto px-6 mb-24 pointer-events-none"
-        >
-          <div className="relative h-[25vh] w-full">
-            <Image
-              src="/logo-new.png"
-              alt="Hot Nation"
-              fill
-              className="object-contain object-center opacity-80 mix-blend-overlay"
-              priority
-              unoptimized
-            />
-          </div>
-        </motion.div>
-      </header>
-
-      {/* Intro Statement - Concept Barre Style */}
-      <section className="py-32 bg-[#FDF7E8] text-center px-6">
-        <h2 className="text-4xl md:text-6xl font-light tracking-tight max-w-4xl mx-auto leading-tight">
-          State of the art <span className="font-serif italic border-b border-black pb-1">infrared heat</span> meets classical <span className="font-serif italic border-b border-black pb-1">barre precision</span>.
-        </h2>
-        <div className="mt-12">
-          <button className="bg-black text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-transparent hover:text-black border border-black transition-all">
-            Explore the Method
-          </button>
-        </div>
-      </section>
-
-      {/* Grid Layout - Dense & Bold */}
-      <section className="bg-[#FDF7E8]">
-        {/* Row 1 - 3 Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 md:h-[80vh]">
-          {/* Item 1 - Image */}
-          <div className="relative group h-[50vh] md:h-full overflow-hidden">
-            <Image
-              src="/img-abs.jpg"
-              alt="Sweat"
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-              unoptimized
-            />
-            <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity p-8">
-              <h3 className={`${syne.className} text-4xl text-white uppercase`}>Sweat</h3>
-            </div>
-          </div>
-
-          {/* Item 2 - Text Block - B&W to Color on Hover/Scroll */}
-          <div className="bg-black p-12 flex flex-col justify-between text-white relative group h-full transition-colors duration-700 hover:bg-[#bc3908]">
-            <motion.div
-              initial={false}
-              whileInView={isMobile ? { backgroundColor: "#bc3908" } : {}}
-              viewport={{ amount: 0.2, margin: "-30% 0px -30% 0px" }}
-              className="absolute inset-0 transition-colors duration-700 pointer-events-none"
-            />
-            <div className="relative z-10 h-full flex flex-col justify-between">
-              <div className="text-xs font-bold uppercase tracking-widest border-b border-white/20 pb-4">
-                Trial Offer
-              </div>
-              <div>
-                <h3 className={`${syne.className} text-6xl uppercase mb-4 transition-transform duration-700 group-hover:scale-105`}>3 Classes</h3>
-                <p className="text-xl font-serif italic text-gray-400 group-hover:text-white transition-colors duration-700">For just 45€</p>
-              </div>
-              <button className="self-start px-6 py-2 border border-white rounded-full text-xs font-bold uppercase hover:bg-white hover:text-black transition-colors">
-                Book Now
+            <div className="mt-12">
+              <button className="btn-concept-filled">
+                Book a Class
               </button>
             </div>
           </div>
 
-          {/* Item 3 - Image */}
-          <div className="relative group h-full overflow-hidden">
+          {/* Col 2 & 3: Image Mosaic with Borders */}
+          <div className="col-span-1 md:col-span-2 grid grid-cols-2 grid-rows-2 h-[50vh] md:h-full">
+            <div className="relative border-r border-b border-black group overflow-hidden">
+              <Image
+                src="/collage-1.jpg"
+                alt="Detail"
+                fill
+                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                unoptimized
+              />
+            </div>
+            <div className="relative border-b border-black group overflow-hidden">
+              <Image
+                src="/collage-3.jpg"
+                alt="Movement"
+                fill
+                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                unoptimized
+              />
+            </div>
+            <div className="relative border-r border-black group overflow-hidden">
+              <Image
+                src="/collage-4.jpg"
+                alt="Studio"
+                fill
+                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                unoptimized
+              />
+            </div>
+            <div className="relative group overflow-hidden">
+              <Image
+                src="/collage-5.jpg"
+                alt="Heat"
+                fill
+                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                unoptimized
+              />
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* STATEMENT SECTION - Bordered & Centered */}
+      <section className="border-b border-black py-24 md:py-32 px-6 bg-[#FDF7E8]">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-4xl md:text-6xl font-light tracking-tight leading-[1.1]">
+            STATE OF THE ART  <span className="font-serif italic border-b border-black pb-1">INFRARED HEAT</span> MEETS CLASSICAL <span className="font-serif italic border-b border-black pb-1">BARRE PRECISION</span>.
+          </h2>
+          <div className="mt-12 flex justify-center">
+            <ArrowRight className="w-8 h-8 animate-pulse-slow" />
+          </div>
+        </div>
+      </section>
+
+      {/* SPLIT SECTION - Method & Studio */}
+      <section className="grid grid-cols-1 md:grid-cols-2 border-b border-black">
+
+        {/* Left: The Method */}
+        <div className="relative border-b md:border-b-0 md:border-r border-black group min-h-[60vh] flex flex-col justify-end p-8 md:p-12 hover:bg-[#bc3908] hover:text-white transition-colors duration-500">
+          <motion.div
+            initial={false}
+            whileInView={isMobile ? { backgroundColor: "#bc3908" } : {}}
+            viewport={{ amount: 0.2, margin: "-30% 0px -30% 0px" }}
+            className="absolute inset-0 transition-colors duration-700 pointer-events-none md:hidden"
+          />
+          <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
+            {/* Optional Hover Image/Texture */}
+          </div>
+          <div className="relative z-10 pointer-events-none">
+            <span className="block text-xs font-bold uppercase tracking-widest mb-4">01. The Workout</span>
+            <h3 className="type-display-huge text-5xl md:text-7xl mb-6">METHOD</h3>
+            <p className="text-lg font-serif italic max-w-md mb-8">
+              Low impact, high intensity. Our signature sequence targets every muscle group.
+            </p>
+            <div className="btn-concept group-hover:border-white group-hover:text-white inline-block">
+              Explore Method
+            </div>
+          </div>
+        </div>
+
+        {/* Right: The Heat */}
+        <div className="relative group min-h-[60vh] flex flex-col justify-end p-8 md:p-12 hover:bg-[#bc3908] hover:text-white transition-colors duration-500">
+          <motion.div
+            initial={false}
+            whileInView={isMobile ? { backgroundColor: "#bc3908" } : {}}
+            viewport={{ amount: 0.2, margin: "-30% 0px -30% 0px" }}
+            className="absolute inset-0 transition-colors duration-700 pointer-events-none md:hidden"
+          />
+          <div className="relative z-10 pointer-events-none">
+            <span className="block text-xs font-bold uppercase tracking-widest mb-4">02. The Technology</span>
+            <h3 className="type-display-huge text-5xl md:text-7xl mb-6">INFRARED</h3>
+            <p className="text-lg font-serif italic max-w-md mb-8">
+              Detoxify, boost metabolism, and improve skin health while you move.
+            </p>
+            <div className="btn-concept group-hover:border-white group-hover:text-white inline-block">
+              Our Studio
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MARQUEE SECTION - Bordered */}
+      <section className="border-b border-black overflow-hidden py-6 bg-black text-white">
+        <div className="whitespace-nowrap animate-marquee flex items-center gap-12">
+          <span className="text-2xl md:text-4xl font-bold uppercase tracking-tighter">HOT CONCEPT &nbsp;—&nbsp; MADRID</span>
+          <span className="text-2xl md:text-4xl font-serif italic">The Original</span>
+          <span className="text-2xl md:text-4xl font-bold uppercase tracking-tighter">INFRARED BARRE &nbsp;—&nbsp; EST 2026</span>
+          <span className="text-2xl md:text-4xl font-serif italic">Full Body</span>
+          <span className="text-2xl md:text-4xl font-bold uppercase tracking-tighter">HOT CONCEPT &nbsp;—&nbsp; MADRID</span>
+          <span className="text-2xl md:text-4xl font-serif italic">The Original</span>
+          <span className="text-2xl md:text-4xl font-bold uppercase tracking-tighter">INFRARED BARRE &nbsp;—&nbsp; EST 2026</span>
+          <span className="text-2xl md:text-4xl font-serif italic">Full Body</span>
+        </div>
+      </section>
+
+      {/* LOCATIONS PREVIEW - Grid */}
+      <section className="grid grid-cols-1 md:grid-cols-2 border-b border-black">
+        <div className="md:border-r border-black relative h-[50vh] md:h-[70vh] group overflow-hidden">
+          <motion.div
+            initial={{ filter: "grayscale(100%)" }}
+            whileInView={isMobile ? { filter: "grayscale(0%)" } : {}}
+            whileHover={{ filter: "grayscale(0%)" }}
+            viewport={{ amount: 0.2, margin: "-30% 0px -30% 0px" }}
+            className="absolute inset-0"
+          >
             <Image
               src="/img-bridge.jpg"
-              alt="Sculpt"
+              alt="Location 1"
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className="object-cover transition-all duration-700"
               unoptimized
             />
-            <div className="absolute bottom-8 left-8">
-              <span className="bg-white text-black px-4 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full">
-                Signature Class
-              </span>
-            </div>
+          </motion.div>
+          <div className="absolute top-0 left-0 p-6 pointer-events-none">
+            <span className="bg-white text-black px-3 py-1 text-[10px] font-bold uppercase tracking-widest border border-black rounded-full">
+              Open Now
+            </span>
+          </div>
+          <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full bg-gradient-to-t from-black/50 to-transparent text-white pointer-events-none">
+            <h3 className="type-display-huge text-4xl md:text-6xl">SALAMANCA</h3>
+            <p className="font-serif italic mt-2">Calle de Lagasca, Madrid</p>
           </div>
         </div>
 
-        {/* Row 2 - 2 Columns Split */}
-        <div className="grid grid-cols-1 md:grid-cols-2 md:h-[80vh] group">
-          <div className="relative bg-black text-white p-12 md:p-24 flex flex-col justify-center min-h-[60vh] md:min-h-0 transition-colors duration-700 hover:bg-[#1a1a1a]">
-            <motion.div
-              initial={false}
-              whileInView={isMobile ? { backgroundColor: "#1a1a1a" } : {}}
-              viewport={{ amount: 0.2, margin: "-30% 0px -30% 0px" }}
-              className="absolute inset-0 transition-colors duration-700 pointer-events-none"
-            />
-            <div className="relative z-10">
-              <h2 className={`${syne.className} text-5xl md:text-8xl uppercase mb-8 leading-[0.9]`}>
-                Infrared<br />Benefit
-              </h2>
-              <p className="text-lg md:text-xl text-gray-500 max-w-md leading-relaxed mb-12 hover:text-gray-300 transition-colors">
-                Detoxify vertically while you sculpt horizontally. Our panels heat the body directly, not the air, allowing for a deeper sweat at a lower temperature.
-              </p>
-              <div className="grid grid-cols-2 gap-8">
-                <div>
-                  <div className="text-4xl font-bold font-serif italic">45m</div>
-                  <div className="text-[10px] uppercase tracking-widest mt-2">Efficiency</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold font-serif italic">600+</div>
-                  <div className="text-[10px] uppercase tracking-widest mt-2">Cals Burned</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="relative h-full overflow-hidden">
+        <div className="relative h-[50vh] md:h-[70vh] group overflow-hidden">
+          <motion.div
+            initial={{ filter: "grayscale(100%)" }}
+            whileInView={isMobile ? { filter: "grayscale(0%)" } : {}}
+            whileHover={{ filter: "grayscale(0%)" }}
+            viewport={{ amount: 0.2, margin: "-30% 0px -30% 0px" }}
+            className="absolute inset-0"
+          >
             <Image
-              src="/back-sweat.jpg"
-              alt="Infrared"
+              src="/img-ball.jpg"
+              alt="Location 2"
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105 transition-all grayscale group-hover:grayscale-0"
+              className="object-cover transition-all duration-700"
               unoptimized
             />
+          </motion.div>
+          <div className="absolute top-0 left-0 p-6 pointer-events-none">
+            <span className="bg-[#bc3908] text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest border border-black rounded-full">
+              Coming Soon
+            </span>
           </div>
-        </div>
-      </section>
-
-      {/* Parallax Full Width */}
-      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/group-floor.jpg"
-            alt="Studio"
-            fill
-            className="object-cover"
-            unoptimized
-          />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-        <div className="relative z-10 text-center text-white px-6">
-          <h2 className={`${syne.className} text-6xl md:text-[8vw] uppercase leading-none`}>The Studio</h2>
-          <button className="mt-8 bg-white text-black px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">
-            View Locations
-          </button>
-        </div>
-      </section>
-
-      {/* Lead Capture Section */}
-      <section className="py-32 bg-black text-white px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className={`${syne.className} text-5xl md:text-7xl font-bold uppercase mb-8 leading-tight`}>
-            Start your <br />
-            <span className="font-serif italic font-light lowercase">hot</span> journey
-          </h2>
-          <p className="font-serif italic text-xl md:text-2xl text-white/60 mb-12 max-w-2xl mx-auto">
-            Join our community and get a free trial class in any of our studios. Discover the power of infrared barre.
-          </p>
-          <form className="flex flex-col md:flex-row gap-4 max-w-lg mx-auto" onSubmit={(e) => e.preventDefault()}>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 bg-white/5 border border-white/20 px-6 py-4 rounded-full text-white placeholder:text-white/30 focus:outline-none focus:border-white transition-all"
-            />
-            <button className="bg-white text-black px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-transparent hover:text-white border border-white transition-all whitespace-nowrap">
-              Get Trial
-            </button>
-          </form>
+          <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full bg-gradient-to-t from-black/50 to-transparent text-white pointer-events-none">
+            <h3 className="type-display-huge text-4xl md:text-6xl">CHAMBERÍ</h3>
+            <p className="font-serif italic mt-2">Calle de Almagro, Madrid</p>
+          </div>
         </div>
       </section>
 
