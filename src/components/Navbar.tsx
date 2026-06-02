@@ -32,7 +32,7 @@ export default function Navbar() {
                     `}
                 >
                     {/* Left - Logo */}
-                    <div className="flex items-center gap-2 relative w-24 h-5 md:w-32 md:h-6 shrink-0">
+                    <div className="flex items-center gap-2 relative w-48 h-10 md:w-64 md:h-12 shrink-0">
                         <Link href="/" className="hover:opacity-70 transition-opacity w-full h-full relative">
                             <Image
                                 src="/logo-warmnation.png"
