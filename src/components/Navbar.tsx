@@ -22,7 +22,7 @@ export default function Navbar() {
     return (
         <>
             {/* Navbar container - Full width strip that moves to vertical center */}
-            <nav className={`fixed left-0 right-0 z-50 transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${isScrolled ? "top-[50%] -translate-y-1/2" : "top-0"}`}>
+            <nav className="fixed top-0 left-0 right-0 z-50">
                 <div
                     className={`
                         w-full flex justify-between items-center text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all duration-700
