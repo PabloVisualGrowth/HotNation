@@ -35,8 +35,8 @@ export default function Navbar() {
                     <div className="flex items-center gap-2 relative w-24 h-5 md:w-32 md:h-6 shrink-0">
                         <Link href="/" className="hover:opacity-70 transition-opacity w-full h-full relative">
                             <Image
-                                src="/logo-new.png"
-                                alt="Hot Nation"
+                                src="/logo-warmnation.png"
+                                alt="Warm Nation"
                                 fill
                                 className={`object-contain object-left ${isScrolled ? "invert-0 filter brightness-0" : "invert-0 filter brightness-0"}`}
                                 priority

@@ -11,8 +11,8 @@ export default function Footer() {
                     {/* Logo Small in Footer */}
                     <div className="relative w-32 h-8 mb-8">
                         <Image
-                            src="/logo-new.png"
-                            alt="Hot Nation"
+                            src="/logo-warmnation.png"
+                            alt="Warm Nation"
                             fill
                             className="object-contain object-left invert"
                             unoptimized
@@ -35,7 +35,7 @@ export default function Footer() {
                     </div>
                     <div>
                         <h4 className="text-xs font-bold uppercase tracking-widest mb-6">Contact</h4>
-                        <p className="text-sm text-gray-600">hello@hotnation.com</p>
+                        <p className="text-sm text-gray-600">hello@warmnation.com</p>
                     </div>
                 </div>
             </div>
@@ -43,8 +43,8 @@ export default function Footer() {
             {/* Huge Logo at Bottom - Inverted to Black */}
             <div className="max-w-7xl mx-auto mt-24 relative h-[20vh] w-full">
                 <Image
-                    src="/logo-new.png"
-                    alt="Hot Nation"
+                    src="/logo-warmnation.png"
+                    alt="Warm Nation"
                     fill
                     className="object-contain object-center invert opacity-10"
                     unoptimized

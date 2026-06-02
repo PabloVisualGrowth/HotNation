@@ -31,7 +31,7 @@ export default function CookiesPage() {
                 <section>
                     <h2 className={`${syne.className} text-3xl uppercase mb-6`}>2. How we use them</h2>
                     <p className="font-serif italic text-lg leading-relaxed text-gray-700">
-                        At Hot Nation, we use cookies to improve your browsing experience. This includes remembering your login details, keeping track of your class bookings, and helping us understand how you interact with our studio's digital platform.
+                        At Warm Nation, we use cookies to improve your browsing experience. This includes remembering your login details, keeping track of your class bookings, and helping us understand how you interact with our studio's digital platform.
                     </p>
                 </section>
 

@@ -45,7 +45,7 @@ export default function PrivacyPage() {
                 <section>
                     <h2 className={`${syne.className} text-3xl uppercase mb-6`}>4. Your Rights</h2>
                     <p className="font-serif italic text-lg leading-relaxed text-gray-700">
-                        You have the right to access, correct, or delete your personal data at any time. If you wish to exercise these rights, please contact us at hello@hotnation.com.
+                        You have the right to access, correct, or delete your personal data at any time. If you wish to exercise these rights, please contact us at hello@warmnation.com.
                     </p>
                 </section>
 
