@@ -21,17 +21,17 @@ export default function LocationsPage() {
 
     const locations = [
         {
-            name: "Eindhoven",
-            address: "Stratumseind 32, Eindhoven",
+            name: "Madrid",
+            address: "Calle Velázquez 28, Madrid",
             desc: "The original studio. Featuring the signature dark room and high-power infrared.",
             status: "Open Now",
             image: "/img-bridge.jpg",
             highlight: false
         },
         {
-            name: "Rotterdam",
-            address: "Coolsingel 40, Rotterdam",
-            desc: "The new sanctuary. Coming soon to the heart of Rotterdam.",
+            name: "Barcelona",
+            address: "Carrer de Provença 184, Barcelona",
+            desc: "The new sanctuary. Coming soon to the heart of Barcelona.",
             status: "Coming Soon",
             image: "/img-ball.jpg",
             highlight: true

@@ -194,7 +194,7 @@ export default function Home() {
           </div>
           <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full bg-gradient-to-t from-black/50 to-transparent text-white pointer-events-none">
             <h3 className="type-display-huge text-4xl md:text-6xl">EINDHOVEN</h3>
-            <p className="font-serif italic mt-2">Stratumseind 32, Eindhoven</p>
+            <p className="font-serif italic mt-2">Calle Velázquez 28, Madrid</p>
           </div>
         </div>
 
@@ -221,7 +221,7 @@ export default function Home() {
           </div>
           <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full bg-gradient-to-t from-black/50 to-transparent text-white pointer-events-none">
             <h3 className="type-display-huge text-4xl md:text-6xl">ROTTERDAM</h3>
-            <p className="font-serif italic mt-2">Coolsingel 40, Rotterdam</p>
+            <p className="font-serif italic mt-2">Carrer de Provença 184, Barcelona</p>
           </div>
         </div>
       </section>
